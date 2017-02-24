@@ -33,7 +33,7 @@ public class MostrarCatalogo extends HttpServlet {
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><meta charset='UTF-8'/></head><body>");
-		// Cancion cancion=new Cancion();
+		// Serie serie=new Serie();
 
 		Connection conn = null;
 		Statement sentencia = null;
