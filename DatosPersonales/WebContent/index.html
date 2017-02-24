@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Datos Personales</title>
+<!-- <style>body {border:solid 1px black; } form{align="center"}</style> -->
+</head>
+<body>
+ <form action="/DatosPersonales/ValidarDatos" method="post">
+	Nombre <input type="text" name="nombre"><br>
+ 	Fecha nacimiento <input type="date" name="fecha"><br>
+  	Sexo: Mujer<input type="radio" name="sexo" value="Mujer">Hombre<input type="radio" name="sexo" value="Hombre"><br>
+	Elige opciones: <br/>
+	-Tengo gato<input type="checkbox" name="mascota" value="gato"><br/>
+	-Tengo perro<input type="checkbox" name="mascota" value="perro"><br/>
+	-No tengo<input type="checkbox" name="mascota" value="no tiene"><br/>
+	 Nacionalidad:
+	 <select name="nacionalidad">
+	 	<option value="-">-</option>
+  		<option value="España">España</option>
+  		<option value="Inglaterra">Inglaterra</option>
+  		<option value="EEUU">EEUU</option>
+  		<option value="Otro">Otro</option>
+	</select> <br/>
+	Contraseña : <input type="password" name="contrasena"/><br/>
+	Comentario: <textarea name="comentario"> </textarea><br/>
+  <input type="submit" value="Submit">
+</form> 
+</body>
+</html>
