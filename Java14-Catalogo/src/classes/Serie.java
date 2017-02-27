@@ -3,6 +3,7 @@ package classes;
 public class Serie {
 	
 	private String titulo;
+	private String id_autor;
 	private String autor;
 	private String anno;
 	private String pais;
@@ -14,10 +15,11 @@ public class Serie {
 	
 	public Serie() {}
 	
-	public Serie(String titulo, String autor, String anno, String pais, String genero, String finalizada, String duracion,
+	public Serie(String titulo, String id_autor, String autor, String anno, String pais, String genero, String finalizada, String duracion,
 			String portada, String descripcion) {
 		super();
 		this.titulo = titulo;
+		this.id_autor = id_autor;
 		this.autor = autor;
 		this.anno = anno;
 		this.pais = pais;
@@ -34,6 +36,13 @@ public class Serie {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	public String getId_Autor() {
+		return id_autor;
+	}
+
+	public void setId_autor(String id_autor) {
+		this.id_autor = id_autor;
 	}
 
 	public String getAutor() {

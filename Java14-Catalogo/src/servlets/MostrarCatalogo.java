@@ -43,9 +43,9 @@ public class MostrarCatalogo extends HttpServlet {
 
 			// Paso 2: Conectarse a la Base de Datos utilizando la clase
 			// Connection
-			String userName = "alumnoj";
-			String password = "alumnoj";
-			String url = "jdbc:mariadb://localhost:4000/catalogo";
+			String userName = "alumno";
+			String password = "alumno";
+			String url = "jdbc:mariadb://localhost/catalogo";
 			conn = DriverManager.getConnection(url, userName, password);
 
 			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
@@ -69,9 +69,8 @@ public class MostrarCatalogo extends HttpServlet {
 			out.print("<th>Autor</th>");
 			out.print("</tr>");
 			while (rset.next()) {
-				Serie serie = new Serie(rset.getString("titulo"), rset.getString("id_autor"), rset.getString("anno"), rset.getString("pais"),
-						rset.getString("genero"), rset.getString("finalizada"), rset.getString("duracion"), rset.getString("portada"), rset.getString("descripcion"));
-			    //out.println("<td> <a href= '/servlet/MostrarObra?titulo="+ serie.getTitulo()+"'>"+ serie.getTitulo()+ "</a></td>");		    
+				Serie serie = new Serie(rset.getString("titulo"),rset.getString("id_autor"),rset.getString("nombre"),rset.getString("anno"),rset.getString("pais"),rset.getString("genero"),
+						rset.getString("finalizada"),rset.getString("duracion"),rset.getString("portada"),rset.getString("descripcion")); //out.println("<td> <a href= '/servlet/MostrarObra?titulo="+ serie.getTitulo()+"'>"+ serie.getTitulo()+ "</a></td>");		    
 			    //out.println("<td>"+ serie.getAutor()+  "</td>");
 			    //out.println("<td>"+ serie.toString()+  "</td>");
 				out.print("<tr>");

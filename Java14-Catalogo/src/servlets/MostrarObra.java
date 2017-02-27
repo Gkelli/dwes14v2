@@ -60,9 +60,9 @@ public class MostrarObra extends HttpServlet {
 
 				// Paso 2: Conectarse a la Base de Datos utilizando la clase
 				// Connection
-				String userName = "alumnoj";
-				String password = "alumnoj";
-				String url = "jdbc:mariadb://localhost:4000/catalogo";
+				String userName = "alumno";
+				String password = "alumno";
+				String url = "jdbc:mariadb://localhost/catalogo";
 				conn = DriverManager.getConnection(url, userName, password);
 
 				// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
@@ -82,9 +82,8 @@ public class MostrarObra extends HttpServlet {
 					out.println("<ul>");
 					while (rset.next()) {
 						//if(titulo_obra.equalsIgnoreCase(rset.getString("titulo"))){
-						Serie serie = new Serie(rset.getString("titulo"), rset.getString("autor"), rset.getString("anno"), rset.getString("pais"),
-								rset.getString("genero"), rset.getString("finalizada"), rset.getString("duracion"), rset.getString("portada"), rset.getString("descripcion"));
-					    
+						Serie serie = new Serie(rset.getString("titulo"),rset.getString("id_autor"),rset.getString("nombre"),rset.getString("anno"),rset.getString("pais"),rset.getString("genero"),
+								rset.getString("finalizada"),rset.getString("duracion"),rset.getString("portada"),rset.getString("descripcion"));
 						out.println("<li>Titulo de la obra: <span>" + serie.getTitulo() + "</span></li>");
 						out.println("<li>Artista: <span>" + serie.getAutor() + "</span></li>");
 						out.println("<li>Genero: <span>" + serie.getGenero()+ "</span></li>");
