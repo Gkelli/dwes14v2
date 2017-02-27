@@ -59,9 +59,9 @@ public class MostrarObra2 extends HttpServlet {
 
 				// Paso 2: Conectarse a la Base de Datos utilizando la clase
 				// Connection
-				String userName = "alumnoj";
-				String password = "alumnoj";
-				String url = "jdbc:mariadb://localhost:4000/catalogo";
+				String userName = "alumno";
+				String password = "alumno";
+				String url = "jdbc:mariadb://localhost/catalogo";
 				conn = DriverManager.getConnection(url, userName, password);
 
 				// Paso 3: Crear sentencias SQL, utilizando objetos de tipo

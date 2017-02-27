@@ -42,9 +42,9 @@ public class MostrarCatalogo2 extends HttpServlet {
 
 			// Paso 2: Conectarse a la Base de Datos utilizando la clase
 			// Connection
-			String userName = "alumnoj";
-			String password = "alumnoj";
-			String url = "jdbc:mariadb://localhost:4000/catalogo";
+			String userName = "alumno";
+			String password = "alumno";
+			String url = "jdbc:mariadb://localhost/catalogo";
 			conn = DriverManager.getConnection(url, userName, password);
 
 			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
@@ -53,7 +53,7 @@ public class MostrarCatalogo2 extends HttpServlet {
 
 			// Paso 4: Ejecutar la sentencia SQL a través de los objetos
 			// Statement
-			String consulta = "SELECT * from obra ";
+			String consulta = "SELECT * FROM obra ";
 
 		
 			
@@ -65,14 +65,14 @@ public class MostrarCatalogo2 extends HttpServlet {
 				if (request.getParameter("nom") != null) {
 					if (request.getParameter("nom").equalsIgnoreCase("titulo")) {
 						if (request.getParameter("orden").equalsIgnoreCase("desc")) {
-							consulta = "SELECT * from obra order by titulo desc";
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by titulo desc";
 						} else
-							consulta = "SELECT * from obra order by titulo";
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by titulo";
 					} else if (request.getParameter("nom").equalsIgnoreCase("autor")) {
 						if (request.getParameter("orden").equalsIgnoreCase("desc")) {
-							consulta = "SELECT * from obra order by id_autor desc";
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by autor desc";
 						} else
-							consulta = "SELECT * from obra order by id_autor";
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by autor";
 					}
 				}
 			} else

@@ -18,10 +18,9 @@ if ($conexion->connect_errno) {
 	echo "<p>Error al establecer la conexión (" . $conexion->connect_errno . ") " . $conexion->connect_error . "</p>";
 }
 if (isset ( $_GET ["serie"] )) {
-	$resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor and titulo like '" . $_REQUEST ["serie"] . "'" );
+	$resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor and titulo like '%" . $_REQUEST ["serie"] . "%'" );
 	//echo "<p>" . $_REQUEST ["serie"] . "</p>";
-} else if (isset ( $_REQUEST ["nom"] )) {
-	
+} else if (isset ( $_REQUEST ["nom"] )) {	
 	if ($_REQUEST ["nom"] == "autor") {
 		if ($_REQUEST ["orden"] == "desc") {
 			$resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor ORDER BY	autor.nombre desc" );
@@ -40,25 +39,19 @@ if (isset ( $_GET ["serie"] )) {
 
 	<table border=1>
 		<tr bgcolor="lightyellow">
-			<!--
-			<th>Titulo</th>
-			<th>Categoria</th>
-			<th>Duración</th>
-			<th>Nombre Autor</th>
-			<th>Imagen</th>  -->
-			<th>Nombre Autor <a href="mostrarObra.php?nom=autor&orden=asc">&#9650;</a>
-				<a href="mostrarObra.php?nom=autor&orden=desc">&#9660;</a>
+			<th>Titulo <a href="mostrarCatalogo.php?nom=titulo&orden=asc">&#9650;</a>
+				<a href="mostrarCatalogo.php?nom=titulo&orden=desc">&#9660;</a>
 			</th>
-			<th>Titulo <a href="mostrarObra.php?nom=titulo&orden=asc">&#9650;</a>
-				<a href="mostrarObra.php?nom=titulo&orden=desc">&#9660;</a>
+			<th>Nombre Autor <a href="mostrarCatalogo.php?nom=autor&orden=asc">&#9650;</a>
+				<a href="mostrarCatalogo.php?nom=autor&orden=desc">&#9660;</a>
 			</th>
 		</tr>
 	<?php
 	
-	while ( $serie = $resultado->fetch_object ( 'Serie' ) ) {
+	while ( $autor = $resultado->fetch_object ( 'Serie' ) ) {
 		echo "<tr>";
-		echo "<td><a href='AutorObra.php?id_autor=" . $serie->get_id_autor () . "'>" . $serie->get_id_autor () . " </td>\n";
-		echo "<td><a href='mostrarObra.php?titulo=&#39" . $serie->get_titulo () . "&#39'>" . $serie->get_titulo () . "</a></td>";
+		echo "<td><a href='mostrarObra.php?titulo=&#39" . $autor->get_titulo () . "&#39'>" . $autor->get_titulo () . "</a></td>";
+		echo "<td><a href='AutorObra.php?id_autor=" . $autor->get_id_autor () . "'>" . $autor->nombre . " </td>\n";
 		echo "</tr>";
 	}
 	

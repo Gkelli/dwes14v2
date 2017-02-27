@@ -47,10 +47,10 @@ if ($_REQUEST ["busqueda"] == "autor") {
 		</tr>
 	<?php
 	
-	while ( $serie = $resultado->fetch_object ( 'Serie' ) ) {
+	while ( $autor = $resultado->fetch_object ( 'Serie' ) ) {
 		echo "<tr bgcolor='lightgrey'>";
-		echo "<td><a href='AutorObra.php?id_autor=" . $serie->get_id_autor () . "'>" . $serie->get_id_autor () . " </td>\n";
-		echo "<td><a href='CopyOfmostrarObra.php?titulo=" . $serie->get_titulo () . "'>" . $serie->get_titulo () . "</a></td>";
+		echo "<td><a href='AutorObra.php?id_autor=" . $autor->get_id_autor () . "'>" . $autor->get_id_autor () . " </td>\n";
+		echo "<td><a href='CopyOfmostrarObra.php?titulo=" . $autor->get_titulo () . "'>" . $autor->get_titulo () . "</a></td>";
 		echo "</tr>";
 	}
 	
@@ -69,9 +69,9 @@ mysqli_free_result ( $resultado );
 $resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor" );
 $ok = false;
 if (isset ( $_POST ["enviar"] )) {
-	while ( $serie = $resultado->fetch_object ( 'Serie' ) ) {
-		if (strcasecmp ( $serie->get_titulo (), $_POST ["titulo"] ) == 0) {
-			echo "<a href='CopyOfmostrarObra.php?titulo='". $serie->get_titulo ()."'>Serie encotrada</a>";
+	while ( $autor = $resultado->fetch_object ( 'Serie' ) ) {
+		if (strcasecmp ( $autor->get_titulo (), $_POST ["titulo"] ) == 0) {
+			echo "<a href='CopyOfmostrarObra.php?titulo='". $autor->get_titulo ()."'>Serie encotrada</a>";
 			$ok = true;
 		}
 	}

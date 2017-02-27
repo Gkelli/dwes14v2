@@ -27,18 +27,18 @@ if (! isset ( $_REQUEST ["titulo"] ))
 	die ( "<h3>ERROR en la petición. Falta titulo de la serie</h3>" );
 $titulo = $_REQUEST ["titulo"];
 $resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor WHERE obra.titulo = " . $titulo . " AND autor.id_autor=obra.id_autor" );
-$serie = $resultado->fetch_array ( MYSQLI_ASSOC );
-if (empty ( $serie ))
+$autor = $resultado->fetch_array ( MYSQLI_ASSOC );
+if (empty ( $autor ))
 	die ( "<h3>ERROR en la petición. Titulo de la serie no válida</h3>" );
-echo "<h3>Identificador de la serie " . $serie ['titulo'] . ":</h3>";
+echo "<h3>Identificador de la serie " . $autor ['titulo'] . ":</h3>";
 echo "<ul>";
-while ( $serie != null ) {
-	echo "<li>Identificador de la obra: <span>" . $serie ['titulo'] . "</span></li>";
-	echo "<li>Duración: <span>" . $serie ['duracion'] . "</span></li>";
-	echo "<li>Identificador del autor: <span>" . $serie ['id_autor'] . "</span></li>";
-	echo "<li>Nombre del Autor: <span>" . $serie ['nombre'] . "</span></li>";
-	echo "<li>Portada:</li> <img  src='img/$serie[portada]' width='100px'>";	
-	$serie = $resultado->fetch_array ( MYSQLI_ASSOC );
+while ( $autor != null ) {
+	echo "<li>Identificador de la obra: <span>" . $autor ['titulo'] . "</span></li>";
+	echo "<li>Duración: <span>" . $autor ['duracion'] . "</span></li>";
+	echo "<li>Identificador del autor: <span>" . $autor ['id_autor'] . "</span></li>";
+	echo "<li>Nombre del Autor: <span>" . $autor ['nombre'] . "</span></li>";
+	echo "<li>Portada:</li> <img  src='img/$autor[portada]' width='100px'>";	
+	$autor = $resultado->fetch_array ( MYSQLI_ASSOC );
 }
 echo "</ul>";
 echo "<br/><button><a href='mostrarCatalogo.php'>VOLVER</a></button>";

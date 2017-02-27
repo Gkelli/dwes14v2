@@ -18,7 +18,7 @@ import classes.Serie;
 /**
  * Servlet implementation class MostrarObra
  */
-@WebServlet("/MostrarObra")
+@WebServlet("/MostrarObra2")
 public class MostrarObra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
