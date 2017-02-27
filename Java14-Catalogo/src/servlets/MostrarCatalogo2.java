@@ -42,9 +42,9 @@ public class MostrarCatalogo2 extends HttpServlet {
 
 			// Paso 2: Conectarse a la Base de Datos utilizando la clase
 			// Connection
-			String userName = "alumno";
-			String password = "alumno";
-			String url = "jdbc:mariadb://localhost/catalogo";
+			String userName = "alumnoj";
+			String password = "alumnoj";
+			String url = "jdbc:mariadb://localhost:4000/catalogo";
 			conn = DriverManager.getConnection(url, userName, password);
 
 			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
@@ -53,8 +53,10 @@ public class MostrarCatalogo2 extends HttpServlet {
 
 			// Paso 4: Ejecutar la sentencia SQL a través de los objetos
 			// Statement
-			String consulta = "SELECT * from obra";
+			String consulta = "SELECT * from obra ";
 
+		
+			
 			if (request.getParameter("obra") != null) {
 
 				consulta = "SELECT * from obra where titulo like '%"+ request.getParameter("obra") + "%'";
@@ -74,7 +76,7 @@ public class MostrarCatalogo2 extends HttpServlet {
 					}
 				}
 			} else
-				consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE  autor.id_autor=obra.id_autor";
+				consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor";
 			
 			ResultSet rset = sentencia.executeQuery(consulta);
 
