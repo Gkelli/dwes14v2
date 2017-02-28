@@ -42,9 +42,9 @@ public class MostrarCatalogo extends HttpServlet {
 
 			// Paso 2: Conectarse a la Base de Datos utilizando la clase
 			// Connection
-			String userName = "alumno";
-			String password = "alumno";
-			String url = "jdbc:mariadb://localhost/catalogo";
+			String userName = "alumnoj";
+			String password = "alumnoj";
+			String url = "jdbc:mariadb://localhost:4000/catalogo";
 			conn = DriverManager.getConnection(url, userName, password);
 
 			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo

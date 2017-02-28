@@ -59,9 +59,9 @@ public class MostrarObra extends HttpServlet {
 
 				// Paso 2: Conectarse a la Base de Datos utilizando la clase
 				// Connection
-				String userName = "alumno";
-				String password = "alumno";
-				String url = "jdbc:mariadb://localhost/catalogo";
+				String userName = "alumnoj";
+				String password = "alumnoj";
+				String url = "jdbc:mariadb://localhost:4000/catalogo";
 				conn = DriverManager.getConnection(url, userName, password);
 
 				// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
@@ -91,7 +91,7 @@ public class MostrarObra extends HttpServlet {
 						out.println("<li>Genero: <span>" + serie.getGenero() + "</span></li>");
 						out.println("<li>¿Está finalizada? <span>" + serie.getFinalizada() + "</span></li>");
 						out.println("<li>Duración: <span>" + serie.getDuracion() + "</span></li>");
-						//out.println("<li>Portada</li> <img  src='img/" + serie.getImagen() + "' width='100px'>");
+						//out.println("<li>Portada</li> <img  src='img/" + serie.getPortada() + "' width='100px'>");
 						out.println("<li>Portada: <br><span>" + serie.getPortada() + "</span></li>");
 						out.println("<li>Descripción: <br><span>" + serie.getDescripcion() + "</span></li>");
 					}

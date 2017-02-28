@@ -98,7 +98,7 @@ public class Serie {
 
 	public String getPortada() {
 		String foto= portada;
-		return  "<img src= './img/" +foto+ "' width=200 height=200>";
+		return  "<img src= './img/" +foto+ "' width='100%' height='300px'>";
 	}
 
 	public void setPortada(String portada) {
