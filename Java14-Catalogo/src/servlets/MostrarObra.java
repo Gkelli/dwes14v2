@@ -30,7 +30,7 @@ public class MostrarObra extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/><link REL='stylesheet' TYPE='text/css' HREF='styles/style.css'></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link REL='stylesheet' TYPE='text/css' HREF='styles/style.css'><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'></head><body>");
 
 		String titulo = "";
 		boolean error_titulo_ausente = false;

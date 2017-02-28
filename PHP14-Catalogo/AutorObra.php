@@ -3,6 +3,7 @@
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
 <link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 </head>
 <body>
 <?php
@@ -38,11 +39,12 @@ echo "</ul>";
 // liberamos la memoria del resultado, que reutilizaremos después
 mysqli_free_result ( $resultado );
 
-echo "<h4>Obras del autor " .$autor ['id_autor'] . " " . $autor ['nombre'] . ":</h4>";
 
 $resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor WHERE  obra.id_autor = " . $id_autor . " AND autor.id_autor=obra.id_autor" );
 $fila = $resultado->fetch_array ( MYSQLI_ASSOC );
 echo "<table border='1'>";
+echo "<tr>";
+echo "<th class='thautor' colspan=6>Obras del autor " .$autor ['id_autor'] . " " . $autor ['nombre'] . ":";
 while ( $fila != null ) {
 	echo "<tr>";
 	echo "<td>Titulo:<span> " . $fila ['titulo'] . "</span></td>";
@@ -54,7 +56,8 @@ while ( $fila != null ) {
 	$fila = $resultado->fetch_array ( MYSQLI_ASSOC );
 	echo "</tr>";
 }
-
+echo "</th>";
+echo "</tr>";
 echo "</table>";
 echo "<br/><button id='button'><a href='mostrarCatalogo.php'>VOLVER</a></button>";
 mysqli_close ( $conexion );

@@ -1,28 +1,40 @@
 table ,form, button, tr, th {
     margin: auto;
-    width: 40%;
+    width: 44%;
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
     margin-top: 1em;
     text-align: center;
 }
-
+.thautor{
+	border:none;
+}
 span {
 	color: grey
 }
-
+a{
+	text-decoration: none;
+}
+h1{
+	text-align: center;
+	font-family: 'Quattrocento', serif;
+}
 label{
 	 font-weight: bold;
 }
 
 ul, h4{
+    list-style-type:none;
     margin: 0 auto;
     width: 40%;
     padding: 2em;
     border: 1px solid #CCC;
     border-radius: 1em;
     margin-top: 1em;
+}
+li{
+	margin-bottom: 10px;
 }
 
 #button, #h{

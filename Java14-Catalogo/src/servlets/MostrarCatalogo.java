@@ -32,7 +32,7 @@ public class MostrarCatalogo extends HttpServlet {
 		// ServletContext contexto = getServletContext();
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'></head><body>");
 
 		Connection conn = null;
 		Statement sentencia = null;
@@ -88,6 +88,8 @@ public class MostrarCatalogo extends HttpServlet {
 			out.print("	<input type='submit' name='enviar' value='Buscar'>");
 			out.print("</form>");
 
+			out.print("<h1>Catálogo de Series</h1>");
+			
 			out.print("<table>");
 			out.print("<tr bgcolor='lightyellow'>");
 			out.print(
