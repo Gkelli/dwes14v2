@@ -3,6 +3,7 @@
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
 <link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 </head>
 <body>
 <?php
