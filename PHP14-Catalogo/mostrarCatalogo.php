@@ -2,6 +2,7 @@
 <head>
 <title>Catalago</title>
 <meta charset="UTF-8" />
+<link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
 </head>
 <body>
 <?php
@@ -19,7 +20,6 @@ if ($conexion->connect_errno) {
 }
 if (isset ( $_GET ["serie"] )) {
 	$resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor and titulo like '%" . $_REQUEST ["serie"] . "%'" );
-	//echo "<p>" . $_REQUEST ["serie"] . "</p>";
 } else if (isset ( $_REQUEST ["nom"] )) {	
 	if ($_REQUEST ["nom"] == "autor") {
 		if ($_REQUEST ["orden"] == "desc") {
@@ -37,7 +37,7 @@ if (isset ( $_GET ["serie"] )) {
 	$resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor where autor.id_autor=obra.id_autor" );
 ?>
 
-	<table border=1>
+	<table>
 		<tr bgcolor="lightyellow">
 			<th>Titulo <a href="mostrarCatalogo.php?nom=titulo&orden=asc">&#9650;</a>
 				<a href="mostrarCatalogo.php?nom=titulo&orden=desc">&#9660;</a>
@@ -57,12 +57,11 @@ if (isset ( $_GET ["serie"] )) {
 	
 	?>
 	</table>
-	<h4>Introduzca titulo de la serie a buscar</h4>
 	<form action="<?php $_SERVER["PHP_SELF"]?>" method="get">
-		<label>Titulo Serie: </label><input type="text" name="serie"><input type="submit" name="enviar" value="Buscar">
-	</form>
-	<?php echo "<br/><button><a href='mostrarCatalogo.php'>Eliminar filtros</a></button>";?>
-	<br />
-	<br />
+		<label>Introduzca titulo de la serie a buscar: </label><br><br><input type="text" name="serie"><input type="submit" name="enviar" value="Buscar">
+		<?php echo "<br/><button class='button'><a href='mostrarCatalogo.php'>Eliminar filtros</a></button>";?>
+	</form>	
+	<br/>
+	<br/>
 </body>
 </html>

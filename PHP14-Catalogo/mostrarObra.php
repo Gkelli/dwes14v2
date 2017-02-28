@@ -2,11 +2,7 @@
 <head>
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
-<style type="text/css">
-span {
-	color: grey
-}
-</style>
+<link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
 </head>
 <body>
 <?php
@@ -29,19 +25,24 @@ $titulo = $_REQUEST ["titulo"];
 $resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor WHERE obra.titulo = " . $titulo . " AND autor.id_autor=obra.id_autor" );
 $autor = $resultado->fetch_array ( MYSQLI_ASSOC );
 if (empty ( $autor ))
-	die ( "<h3>ERROR en la petición. Titulo de la serie no válida</h3>" );
-echo "<h3>Identificador de la serie " . $autor ['titulo'] . ":</h3>";
+	die ( "<h4>ERROR en la petición. Titulo de la serie no válida</h4>" );
+echo "<h4 id='h'>Datos de la serie " . $autor ['titulo'] . ":</h4>";
 echo "<ul>";
 while ( $autor != null ) {
-	echo "<li>Identificador de la obra: <span>" . $autor ['titulo'] . "</span></li>";
-	echo "<li>Duración: <span>" . $autor ['duracion'] . "</span></li>";
+	echo "<li>Titulo: <span>" . $autor ['titulo'] . "</span></li>";
+	echo "<li>Año: <span>" . $autor ['anno'] . "</span></li>";
+	echo "<li>Pais: <span>" . $autor ['pais'] . "</span></li>";
+	echo "<li>Genero: <span>" . $autor ['genero'] . "</span></li>";
+	echo "<li>Duración: <span>" . $autor ['duracion'] . " minutos</span></li>";
 	echo "<li>Identificador del autor: <span>" . $autor ['id_autor'] . "</span></li>";
 	echo "<li>Nombre del Autor: <span>" . $autor ['nombre'] . "</span></li>";
-	echo "<li>Portada:</li> <img  src='img/$autor[portada]' width='100px'>";	
+	echo "<li>Descripción: <span>" . $autor ['descripcion'] . "</span></li>";
+	echo "<li>Portada:</li><img  src='img/$autor[portada]' width='100%' height='300px'>";	
 	$autor = $resultado->fetch_array ( MYSQLI_ASSOC );
 }
+echo "<br/><button class='button'><a href='mostrarCatalogo.php'>VOLVER</a></button>";
 echo "</ul>";
-echo "<br/><button><a href='mostrarCatalogo.php'>VOLVER</a></button>";
+
 mysqli_close ( $conexion );
 ?>
 

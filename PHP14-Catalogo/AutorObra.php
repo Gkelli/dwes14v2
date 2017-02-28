@@ -2,11 +2,7 @@
 <head>
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
-<style type="text/css">
-span {
-	color: grey
-}
-</style>
+<link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
 </head>
 <body>
 <?php
@@ -30,9 +26,10 @@ $resultado = $conexion->query ( "SELECT * FROM autor WHERE id_autor = " . $id_au
 $autor = $resultado->fetch_array ( MYSQLI_ASSOC );
 if (empty ( $autor ))
 	die ( "<h3>ERROR en la petición. Identificador del autor no válido</h3>" );
-echo "<h3>Datos del autor: </h3>";
+//echo "<h4>Datos del autor: </h4>";
 echo "<ul>";
 while ( $autor != null ) {
+	echo "<label>Datos del autor: </label><br><br>";
 	echo "<li>Id del autor: <span>" . $autor ['id_autor'] . "</span></li>";
 	echo "<li>Nombre: <span>" . $autor ['nombre'] . "</span></li>";
 	$autor = $resultado->fetch_array ( MYSQLI_ASSOC );
@@ -41,22 +38,25 @@ echo "</ul>";
 // liberamos la memoria del resultado, que reutilizaremos después
 mysqli_free_result ( $resultado );
 
-echo "<h3>Obras del autor " .$autor ['id_autor'] . " " . $autor ['nombre'] . ":</h3>";
+echo "<h4>Obras del autor " .$autor ['id_autor'] . " " . $autor ['nombre'] . ":</h4>";
 
 $resultado = $conexion->query ( "SELECT *,nombre AS autor FROM obra,autor WHERE  obra.id_autor = " . $id_autor . " AND autor.id_autor=obra.id_autor" );
 $fila = $resultado->fetch_array ( MYSQLI_ASSOC );
 echo "<table border='1'>";
 while ( $fila != null ) {
 	echo "<tr>";
-	echo "<th style='background-color:lightgrey;' >Serie</th>";
 	echo "<td>Titulo:<span> " . $fila ['titulo'] . "</span></td>";
-	echo "<td>Categoria: <span>" . $fila ['genero'] . "</span></td>";
-	echo "<td>Duración: <span>" . $fila ['duracion'] . "</span></td>";
+	echo "<td>Genero: <span>" . $fila ['genero'] . "</span></td>";
+	echo "<td>Año: <span>" . $fila ['anno'] . "</span></td>";	
+	echo "<td>Duración: <span>" . $fila ['duracion'] . " minutos</span></td>";
+	echo "<td>Pais: <span>" . $fila ['pais'] . "</span></td>";
+	echo "<td> <span><img src= 'img/" . $fila ['portada']."' width=100 height=100></span></td>";
 	$fila = $resultado->fetch_array ( MYSQLI_ASSOC );
 	echo "</tr>";
 }
+
 echo "</table>";
-echo "<a href='mostrarCatalogo.php'>Eliminar filtros</a>";
+echo "<br/><button id='button'><a href='mostrarCatalogo.php'>VOLVER</a></button>";
 mysqli_close ( $conexion );
 ?>
 

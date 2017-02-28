@@ -18,7 +18,7 @@ import classes.Serie;
 /**
  * Servlet implementation class MostrarObra
  */
-@WebServlet("/MostrarObra2")
+@WebServlet("/MostrarObra")
 public class MostrarObra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,27 +30,26 @@ public class MostrarObra extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link REL='stylesheet' TYPE='text/css' HREF='styles/style.css'></head><body>");
 
-		String titulo_obra = null;
-		boolean error_titulo_inexistente = false;
-		boolean error_formato_titulo = false;
-		//boolean error_obra_inexistente = false;
-		String obra_aux = request.getParameter("titulo");
-		if (obra_aux == null)
-			error_titulo_inexistente = true;
+		String titulo = "";
+		boolean error_titulo_ausente = false;
+		boolean error_titulo_erroneo = false;
+		String param_obra = request.getParameter("titulo");
+		if (param_obra == null)
+			error_titulo_ausente = true;
 		else {
 			try {
-				titulo_obra = String.valueOf(obra_aux);
+				titulo = String.valueOf(param_obra);
 			} catch (Exception e) {
-				error_formato_titulo = true;
+				error_titulo_erroneo = true;
 			}
 		}
 
-		if (error_titulo_inexistente) {
-			out.println("<h3>Error: falta titulo de la serie</h3>");
-		} else if (error_formato_titulo) {
-			out.println("<h3>Error: titulo de la serie no válido</h3>");
+		if (error_titulo_ausente) {
+			out.println("<h3>Error: falta el titulo de la serie</h3>");
+		} else if (error_titulo_erroneo) {
+			out.println("<h3>Error: titulo de la serie inválido</h3>");
 		} else {
 			Connection conn = null;
 			Statement sentencia = null;
@@ -72,31 +71,33 @@ public class MostrarObra extends HttpServlet {
 				// Paso 4: Ejecutar la sentencia SQL a través de los objetos
 				// Statement
 
-				String consulta_obra = "SELECT *,nombre AS autor FROM obra,autor WHERE obra.titulo = " + titulo_obra
-						+ " AND autor.id_autor=obra.id_autor ";
+				String consulta_obra = "SELECT *,nombre AS autor FROM obra,autor WHERE titulo = " + titulo
+						+ " AND autor.id_autor=obra.id_autor";
 				ResultSet rset = sentencia.executeQuery(consulta_obra);
 				if (!rset.isBeforeFirst()) {
-					out.println("<p>No hay ninguna obra</p>");
+					out.println("<h3>Este autor no tiene ninguna serie</h3>");
 				} else {
 					// Continuar
+					out.println("<h3>Datos de la Serie</h3>");
 					out.println("<ul>");
 					while (rset.next()) {
-						//if(titulo_obra.equalsIgnoreCase(rset.getString("titulo"))){
 						Serie serie = new Serie(rset.getString("titulo"),rset.getString("id_autor"),rset.getString("nombre"),rset.getString("anno"),rset.getString("pais"),rset.getString("genero"),
 								rset.getString("finalizada"),rset.getString("duracion"),rset.getString("portada"),rset.getString("descripcion"));
-						out.println("<li>Titulo de la obra: <span>" + serie.getTitulo() + "</span></li>");
-						out.println("<li>Artista: <span>" + serie.getAutor() + "</span></li>");
-						out.println("<li>Genero: <span>" + serie.getGenero()+ "</span></li>");
-						out.println("<li>Duración: <span>" + serie.getDuracion() + " minutos</span></li>");
-						out.println("<li>Nombre del Autor: <span>" + serie.getAutor() + "</span></li>");
+						
+						out.println("<li>Titulo de la serie: <span>" + serie.getTitulo() + "</span></li>");
+						out.println("<li>Autor: <span>" + serie.getAutor() + "</span></li>");
+						out.println("<li>Año:<span> " + serie.getAnno() + "</span></li>");
+						out.println("<li>Pais: <span>" + serie.getPais()+ "</span></li>");
+						out.println("<li>Genero: <span>" + serie.getGenero() + "</span></li>");
+						out.println("<li>¿Está finalizada? <span>" + serie.getFinalizada() + "</span></li>");
+						out.println("<li>Duración: <span>" + serie.getDuracion() + "</span></li>");
+						//out.println("<li>Portada</li> <img  src='img/" + serie.getImagen() + "' width='100px'>");
 						out.println("<li>Portada: <br><span>" + serie.getPortada() + "</span></li>");
-						//out.println("<li>Portada</li> <img  src='img/" + serie.getPortada() + "' width='100px'>");
+						out.println("<li>Descripción: <br><span>" + serie.getDescripcion() + "</span></li>");
 					}
+					out.print("<br/><button class='button'><a href='/Java14-Catalogo/MostrarCatalogo'>volver</a></button>");
 					out.println("</ul>");
-				}
-				//}
-
-				out.print("<br/><a href='/Java14-Catalogo/MostrarCatalogo'>volver</a>");
+				}				
 
 				// Paso 6: Desconexión
 				if (sentencia != null)
@@ -107,7 +108,6 @@ public class MostrarObra extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 		out.println("</body></html>");
 		out.close();
 	}

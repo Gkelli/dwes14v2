@@ -1,0 +1,32 @@
+table ,form, button, tr, th {
+    margin: auto;
+    width: 40%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    margin-top: 1em;
+    text-align: center;
+}
+
+span {
+	color: grey
+}
+
+label{
+	 font-weight: bold;
+}
+
+ul{
+    margin: 0 auto;
+    width: 40%;
+    padding: 2em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    margin-top: 1em;
+}
+
+#button, #h, h3{
+	display: block;
+    margin: 0 auto;
+    width: 40%;
+}

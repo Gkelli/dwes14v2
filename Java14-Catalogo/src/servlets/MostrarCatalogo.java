@@ -32,8 +32,7 @@ public class MostrarCatalogo extends HttpServlet {
 		// ServletContext contexto = getServletContext();
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/></head><body>");
-		// Serie serie=new Serie();
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'></head><body>");
 
 		Connection conn = null;
 		Statement sentencia = null;
@@ -54,76 +53,104 @@ public class MostrarCatalogo extends HttpServlet {
 
 			// Paso 4: Ejecutar la sentencia SQL a través de los objetos
 			// Statement
-			String consulta = "SELECT * from obra";
+			String consulta = "SELECT * FROM obra ";
+			
+			if (request.getParameter("serie") != null) {
+				consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor AND titulo like '%"+ request.getParameter("serie") + "%'";
+				
+			} else{
+	
+				consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor";
+				if (request.getParameter("nom") != null) {
+					if (request.getParameter("nom").equalsIgnoreCase("titulo")) {
+						if (request.getParameter("orden").equalsIgnoreCase("desc")) {
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by titulo desc";
+						} else
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by titulo";
+					} else if (request.getParameter("nom").equalsIgnoreCase("autor")) {
+						if (request.getParameter("orden").equalsIgnoreCase("desc")) {
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by autor desc";
+						} else
+							consulta = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor=obra.id_autor order by autor";
+					}
+				}
+			}
 			ResultSet rset = sentencia.executeQuery(consulta);
 
 			if (!rset.isBeforeFirst()) {
-				out.println("<h3>No hay resultados</p>");
+				out.println("<h3>No hay resultados</h3>");
 			}
 
 			// Paso 5: Mostrar resultados
+			
+			out.print("<form action='MostrarCatalogo' method='get'>");
+			out.print("	<label>Buscar Serie por título: </label><input type='text' name='serie'>");
+			out.print("	<input type='submit' name='enviar' value='Buscar'>");
+			out.print("</form>");
 
-			out.print("<table border='1'>");
-			out.print("<tr>");
-			out.print("<th>Título</th>");
-			out.print("<th>Autor</th>");
+			out.print("<table>");
+			out.print("<tr bgcolor='lightyellow'>");
+			out.print(
+					"<th>Título <a href='MostrarCatalogo?nom=titulo&orden=asc'>&#9650;</a><a href='MostrarCatalogo?nom=titulo&orden=desc'>&#9660;</a></th>");
+			out.print(
+					"<th>Autor <a href='MostrarCatalogo?nom=autor&orden=asc'>&#9650;</a><a href='MostrarCatalogo?nom=autor&orden=desc'>&#9660;</a></th>");
 			out.print("</tr>");
 			while (rset.next()) {
 				Serie serie = new Serie(rset.getString("titulo"),rset.getString("id_autor"),rset.getString("nombre"),rset.getString("anno"),rset.getString("pais"),rset.getString("genero"),
-						rset.getString("finalizada"),rset.getString("duracion"),rset.getString("portada"),rset.getString("descripcion")); //out.println("<td> <a href= '/servlet/MostrarObra?titulo="+ serie.getTitulo()+"'>"+ serie.getTitulo()+ "</a></td>");		    
-			    //out.println("<td>"+ serie.getAutor()+  "</td>");
-			    //out.println("<td>"+ serie.toString()+  "</td>");
+						rset.getString("finalizada"),rset.getString("duracion"),rset.getString("portada"),rset.getString("descripcion"));
 				out.print("<tr>");
-				out.print("<td><a href='MostrarObra?titulo=&#39" + serie.getTitulo() + "&#39' >" + serie.getTitulo() + "</td>");
-				out.print("<td><a href='MostrarCatalogo?id_autor=" + serie.getAutor() + "' >" + serie.getAutor() + "</a></td>");
+				out.print("<td><a href='MostrarObra?titulo=&#39;" + serie.getTitulo() + "&#39;' >" + serie.getTitulo() + "</td>");
+				out.print(
+						"<td><a href='MostrarCatalogo?id_autor=" + serie.getId_Autor() + "' >" + serie.getAutor() + "</a></td>");
 				out.print("</tr>");
 			}
 			out.print("</table>");
 
-			// Crear filtro para id del autor
+			// Crear filtro para id autor
 
-			int id = 0;
-			String param_aux = request.getParameter("id_autor");
+			int id_autor_aux = 0;
+			String id_param = request.getParameter("id_autor");
 
 			try {
-				id = Integer.parseInt(param_aux);
+				id_autor_aux = Integer.parseInt(id_param);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-			if (id != 0) {				
-				String consulta_autor = "SELECT * from autor where id_autor=" + id;
+			if (id_autor_aux != 0) {
+				
+				String consulta_autor = "SELECT * from autor where id_autor=" + id_autor_aux;
 				rset = sentencia.executeQuery(consulta_autor);
 				if (!rset.isBeforeFirst()) {
-					out.println("<h3>No hay resultados</p>");
+					out.println("<h3>No hay resultados</h3>");
 				}
 				// Paso 5: Mostrar resultados
 
 				else {
 					rset.next();
-					out.println("<p>Obras del autor " + rset.getString("nombre") + ":</p>");
+					out.println("<h3>Obras del autor " + rset.getString("nombre") + ":</h3>");
 				}
 
-				String consulta_obras = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor = " + id
-						+ " AND autor.id_autor=obra.id_autor ";
+				String consulta_obras = "SELECT *,nombre AS autor FROM obra,autor WHERE autor.id_autor = " + id_autor_aux
+						+ " AND autor.id_autor=obra.id_autor";
 				rset = sentencia.executeQuery(consulta_obras);
 				if (!rset.isBeforeFirst()) {
-					out.println("<p>Este autor no tiene ninguna obra</p>");
-				}		
-				out.println("<table border='1'>");
-				
-				while (rset.next()) {
-					out.println( "<tr>");
-					out.println( "<th style='background-color:lightgrey;' >Serie</th>");
-					out.println( "<td>Titulo:<span> " +rset.getString("titulo")+ "</span></td>");
-					out.println( "<td>Categoria: <span>"+ rset.getString("genero")+ "</span></td>");
-					out.println( "<td>Duración: <span>" + rset.getString("duracion")+ "</span></td>");
-					out.println( "<td><img src='img/"+rset.getString("portada")+"' width='100px'></td>");
-					out.println( "</tr>");
+					out.println("<h3>Este autor no tiene ninguna obra</h3>");
 				}
-				out.println( "</table>");
-			}
-			//out.print("<br/><a href='/Java14-Catalogo/MostrarCatalogo'>Eliminar filtros</a>");
+				out.println("<table border=1>");
 
+				while (rset.next()) {
+					out.println("<tr>");
+					out.println("<td>Titulo:<span> " + rset.getString("titulo") + "</span></td>");
+					out.println("<td>Genero: <span>" + rset.getString("genero") + "</span></td>");
+					out.println("<td>Duración: <span>" + rset.getString("duracion") + " minutos</span></td>");
+					out.println("<td>Portada: <br><img  src='img/" + rset.getString("portada") + "' width='100px'></td>");
+					out.println("</tr>");
+				}
+				
+				out.println("</table>");
+			
+			}
+			out.print("<br/><button id='button'><a href='/Java14-Catalogo/MostrarCatalogo'>Eliminar filtros</a></button>");
 			// Paso 6: Desconexión
 			if (sentencia != null)
 				sentencia.close();
@@ -135,6 +162,7 @@ public class MostrarCatalogo extends HttpServlet {
 
 		out.println("</body></html>");
 		out.close();
+
 	}
 
 	/**
@@ -143,6 +171,7 @@ public class MostrarCatalogo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
