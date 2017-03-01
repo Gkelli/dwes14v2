@@ -1,47 +1,53 @@
 <?php
-session_start();
-$mensajeError="";
+session_start ();
+$mensajeError = "";
+?>
+<?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-	if (empty($_POST['usuario'])) {
+$servidor = "localhost";
+$usuario = "alumno_rw";
+$clave = "dwes";
+$conexion = new mysqli ( $servidor, $usuario, $clave, "catalogo" );
+echo "Hola 1";
+$conexion->query ( "SET NAMES 'UTF8'" );
+if ($conexion->connect_errno) {
+	$mensajeError = "Error al establecer la conexión: " . $conexion->connect_errno . "-" . $conexion->connect_error;
+}
+if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
+	if (empty ( $_POST ['usuario'] )) {
 		$mensajeError = "Debes introducir un nombre";
-	}
-	else {
-		$_SESSION['usuario']=$_POST['usuario'];
-// 		$servidor = "localhost";
-// 		$usuario = $_SESSION['usuario'];
-// 		$clave = $_POST['password'];
-// 		$conexion = new mysqli ( $servidor, $usuario, $clave, "catalogo" );
-// 		$conexion->query ( "SET NAMES 'UTF8'" );
-// 		if ($conexion->connect_errno) {
-// 			$mensajeError = "Error al establecer la conexión: " . $conexion->connect_errno . "-" . $conexion->connect_error;
-// 		}
+	} else {
+		$username = $_POST ['usuario'];
+		$password = $_POST ['password'];
+		
+		$consulta = "SELECT * FROM usuario WHERE nombre =". $username;
+		echo "Hola 2";
+		$resultado = $conexion->query ( $consulta );
+		// detectar error en la consulta
+		$mensajeError = $conexion->error;
+		if (empty ( $mensajeError ))
+			header ( "Location: index.php" );
+			
+		if ($result->num_rows > 0) {
+		}
+		$row = $result->fetch_array ( MYSQLI_ASSOC );
+		if (password_verify ( $password, $row ['password'] )) {
+			echo "Hola 3";
+			$_SESSION ['loggedin'] = true;
+			$_SESSION ['username'] = $username;
+			$_SESSION ['start'] = time ();
+			$_SESSION ['expire'] = $_SESSION ['start'] + (5 * 60);
+			
+			echo "Bienvenido! " . $_SESSION ['username'];
+			echo "<br><br><a href=index.php>Inicio</a>";
+		} else {
+			echo "Nombre de usuario o contraseña son incorrectos.";
+			echo "<br><a href='index.html'>Volver a Intentarlo</a>";
+		}
+		mysqli_close ( $conexion );
 	}
 }
-?>
-<html>
-<head>
-<title>Autenticación en PHP</title>
-<meta charset="UTF-8"/>
-</head>
-<body>
-<?php 
 
-if (isset($_SESSION['usuario'])) {
-	echo "<h2>Bienvenido, ".$_SESSION['usuario']."</h2>";
-}
-else {
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-    <label>Introduce tu nombre:</label><br><input type="text" name="usuario"><br>
-    <label>Contraseña:</label><br><input type="password" name="password"><br>
-    <input type="submit" value="Entrar" name="enviar">
-</form>
-<?php 
-}
-if (!empty($mensajeError)) {
-	echo "<h3>$mensajeError</h3>";
-}
-?>
-</body>
-</html>
+
+

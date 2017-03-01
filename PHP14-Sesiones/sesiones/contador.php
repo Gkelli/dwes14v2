@@ -1,18 +1,19 @@
 <?php
+//session_name("idSesionU5A02-14-");
 session_start ();
 
 if (session_status () == PHP_SESSION_NONE)
 	$mensaje = "No hay sesión iniciada";
 
 else {
-	$nombre_sesion = session_name("idSesionU5A02-14-contador");
+	//$nombre_sesion = session_name("idSesionU5A02-14-contador");
 	if (isset ( $_SESSION ['contador'] ))
 		$_SESSION ['contador'] += 1;
 		//session_name(idSesionU5A02-14-contador);		
 	else
 		$_SESSION ['contador'] = 1;
 	
-	$mensaje = "Has visitado esta página " . $_SESSION ['contador'] . " veces en esta sesión.". $nombre_sesion ;
+	$mensaje = "Has visitado esta página " . $_SESSION ['contador'] . " veces en esta sesión"  ;
 }
 ?>
 <html>
