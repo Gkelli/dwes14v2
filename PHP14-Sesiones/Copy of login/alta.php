@@ -1,9 +1,5 @@
 <?php 
-session_start ();
-$mensajeError = "";
-
-//falta crear la conexion y posteriormente relacionar la consulta
-
+ 
 if(isset($_POST["register"])){
  
 if(!empty($_POST['full_name'])  && !empty($_POST['username']) && !empty($_POST['password'])) {
@@ -18,17 +14,16 @@ if(!empty($_POST['full_name'])  && !empty($_POST['username']) && !empty($_POST['
  {
  $sql="INSERT INTO usuario (login ,password, nombre ) VALUES('$username', '$password', '$full_name')";
  echo "Bienvenido";
- 
 $result=mysql_query($sql);
  
  if($result){
- 	$mensajeError = "Cuenta Correctamente Creada";
+ $message = "Cuenta Correctamente Creada";
  } else {
- 	$mensajeError = "Error al ingresar datos de la informacion!";
+ $message = "Error al ingresar datos de la informacion!";
  }
  
 } else {
-	$mensajeError = "El nombre de usuario ya existe! Por favor, intenta con otro!";
+ $message = "El nombre de usuario ya existe! Por favor, intenta con otro!";
  }
  
 } else {
@@ -37,7 +32,7 @@ $result=mysql_query($sql);
 }
 ?>
  
-<?php if (!empty($mensajeError)) {echo "<p class=\"error\">" . "Mensaje: ". $mensajeError . "</p>";} ?>
+<?php if (!empty($message)) {echo "<p class=\"error\">" . "Mensaje: ". $message . "</p>";} ?>
  
 <div class="container mregister">
 
@@ -64,7 +59,7 @@ $result=mysql_query($sql);
  <input type="submit" name="register" id="register" class="button" value="Registrar" />
  </p>
  
- <p class="regtext">Ya tienes una cuenta? <a href="index.php" >Entra Aquí!</a>!</p>
+ <p class="regtext">Ya tienes una cuenta? <a href="login.php" >Entra Aquí!</a>!</p>
 </form>
  
  </div>

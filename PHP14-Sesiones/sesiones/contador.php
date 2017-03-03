@@ -1,5 +1,5 @@
 <?php
-//session_name("idSesionU5A02-14-");
+session_name("idSesionU5A02-14-");
 session_start ();
 
 if (session_status () == PHP_SESSION_NONE)

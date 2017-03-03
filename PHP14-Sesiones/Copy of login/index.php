@@ -3,8 +3,6 @@ session_start();
 $mensajeError="";
 //http://velozityweb.com/blog/php/login-de-usuarios-y-creacion-de-sesiones-con-php-y-mysql/#sthash.9hugLxmx.dpbs
 //http://blog.hostdime.com.co/guia-para-crear-un-sistema-de-inicio-de-sesion-y-registro-usando-php-y-mysql/
-//http://www.ajpdsoft.com/modules.php?name=News&file=article&sid=486
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if (empty($_POST['usuario'])) {
 		$mensajeError = "Debes introducir un nombre";
