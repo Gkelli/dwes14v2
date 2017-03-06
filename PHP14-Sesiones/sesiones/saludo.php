@@ -1,7 +1,3 @@
-<?php 
-//index.php: simulará el contenido real de nuestra aplicación, sólo disponible para usuarios autenticados (en esta práctica será simplemente un saludo al usuario autenticado). Si un usuario accede a esta página sin estar autenticado, será redirigido de forma automática a login.php
-?>
-
 <?php
 session_start();
 $mensajeError="";
@@ -26,7 +22,11 @@ if (isset($_SESSION['usuario'])) {
 }
 else {
 ?>
-
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+    <label>Introduce tu nombre:</label>
+    <input type="text" name="usuario"><br/>
+    <input type="submit" value="Entrar" name="enviar">
+</form>
 <?php 
 }
 if (!empty($mensajeError)) {

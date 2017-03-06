@@ -10,7 +10,9 @@
 // if(count($_COOKIE) ==0) echo "<h3>Advertencia: tu navegador tiene las cookies deshabilitadas. Esta aplicación no funcionará</h3>";
 // recoger datos
 if (isset ( $_POST ["enviar"] )) {
-	setcookie ( "visitante", $_POST ["nombre"], time () + (300), "/PHP14-Sesiones/cookies" ); // 86400 = segundos en 1 día
+	setcookie("test", "test", time() + 3600, '/');
+	if(count($_COOKIE) ==0) echo "<h3>Advertencia: tu navegador tiene las cookies deshabilitadas. Esta aplicación no funcionará</h3>";
+	//setcookie ( "visitante", $_POST ["nombre"], time () + (300), "/PHP14-Sesiones/cookies" ); // 86400 = segundos en 1 día
 } elseif (isset ( $_POST ["eliminar"] )) {
 	setcookie ( "visitante", $_POST ["nombre"], time () + (-1), "/PHP14-Sesiones/cookies" ); // -1 para una fecha anterior a la actual
 }

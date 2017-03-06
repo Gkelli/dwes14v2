@@ -1,30 +1,50 @@
 <?php
-session_name("idSesionU5A02-14-");
-session_start ();
+if(session_status() == PHP_SESSION_NONE) {
+	session_name ( "idSesionU5A02-14-contador" );
+	session_start();
+}
 
-if (session_status () == PHP_SESSION_NONE)
+if (isset($_REQUEST["reiniciarContador"])) {
+	unset($_SESSION["contador"]); // elige una
+	$_SESSION=array(); // elige una
+}
+if (isset($_REQUEST["cerrarSesion"])) {
+	$_SESSION=array();
+	session_unset();
+	if (ini_get("session.use_cookies")) {
+		$params = session_get_cookie_params();
+		setcookie(session_name(), '', time() - 42000,
+				$params["path"], $params["domain"],
+				$params["secure"], $params["httponly"]
+				);
+	}
+	session_destroy();
+}
+
+if(session_status() == PHP_SESSION_NONE)
 	$mensaje = "No hay sesión iniciada";
-
-else {
-	//$nombre_sesion = session_name("idSesionU5A02-14-contador");
-	if (isset ( $_SESSION ['contador'] ))
-		$_SESSION ['contador'] += 1;
-		//session_name(idSesionU5A02-14-contador);		
-	else
-		$_SESSION ['contador'] = 1;
-	
-	$mensaje = "Has visitado esta página " . $_SESSION ['contador'] . " veces en esta sesión"  ;
+	else {
+		if(isset( $_SESSION['contador']))
+			$_SESSION['contador']+= 1;
+			else
+				$_SESSION['contador']=1;
+				$mensaje = "Has visitado esta página ". $_SESSION['contador']." veces en esta sesión.";
+	}
+if (isset ( $_REQUEST ["num"] )) {
+	$_SESSION ['contador'] = $_REQUEST ["num"];
 }
 ?>
 <html>
 <head>
 <title>Sesiones</title>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 </head>
 <body>
-	<h3><?php echo $mensaje;?></h3>
-	<p>
-		<a href="<?php echo $_SERVER['PHP_SELF']?>">Recargar la página</a>
-	</p>
-</body>
-</html>
+<h3><?php echo $mensaje;?></h3>
+<form>
+	<label>Introduzca un valor para el contador: </label><input type"number" name="num">
+</form>
+<p><a href="<?php echo $_SERVER['PHP_SELF']?>">Recargar la página</a></p>
+<p><a href="<?php echo $_SERVER['PHP_SELF']."?reiniciarContador=true"?>">Reiniciar contador</a></p>
+<p><a href="<?php echo $_SERVER['PHP_SELF']."?cerrarSesion=true"?>">Cerrar sesión</a></p>
+</body></html>
