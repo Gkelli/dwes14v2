@@ -1,26 +1,62 @@
 <?php 
-session_start();
-$mensajeError = "";
+//baja.php: elimina el usuario de la base de datos y redirige a logout.php para cerrar la sesión. Para dar mayor realismo, solicitaremos al usuario que confirme su contraseña antes de proceder a la baja.
 ?>
 <?php
-
-echo "<h2>Bienvenido, ".$_SESSION['usuario']."</h2>";
-
-
-// Recuperar la sesión actual
-
-
-// Si el usuario ha enviado el formulario...
-// ¿El campo de contraseña está vacío?
-// Sí: Actualizar la variable $mensajeError
-// No: ¿Coincide la contraseña con la almacenada en la base de datos?
-// No: actualizar $mensajeError
-// Sí: ¿surge error al intentar eliminar el usuario de la base de datos?
-// Sí: Actualizar la variable $mensajeError con el atributo error del objeto $conexion
-// No: redirigir a 'logout.php'
-// 		Después de emitir la cabecera HTML (sólo se llega hasta aquí si el usuario no envió el formulario, o bien lo envió pero surgieron errores, de lo contrario se habrá redirigido a logout.php))
-// 		Mostrar el formulario de confirmación de contraseña para proceder al borrado de la cuenta. El formulario será procesado por este mismo archivo.
-// 		Incluir un enlace para volver a index.php por si el usuario cambia de idea y no desea dar de baja la cuenta.
-
-
+session_start ();
+$mensajeError = "";
+// if (! empty ( $_SESSION ['usuario'] )) {
+// 	header ( 'Location: index.php' );
+// }
 ?>
+<html>
+<head>
+<title>Baja de usuario</title>
+<meta charset="UTF-8" />
+<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+</head>
+<body>
+<?php
+$servidor = "localhost";
+$usuario = "alumno_rw";
+$clave = "dwes";
+$conexion = new mysqli ( $servidor, $usuario, $clave, "catalogo" );
+$conexion->query ( "SET NAMES 'UTF8'" );
+if ($conexion->connect_errno) {
+	echo "<p>Error al establecer la conexión (" . $conexion->connect_errno . ") " . $conexion->connect_error . "</p>";
+}
+if (isset ( $_REQUEST ['enviar'] )) {
+	$password = $_REQUEST ["password"];
+	
+		if (empty ( $_REQUEST ['password'] )){
+			$mensajeError = "Debes introducir la contraseña para darte de baja";
+		} else {
+		$consulta = "DELETE FROM usuario WHERE login='" . $_SESSION ['usuario'] ."'";
+		$resultado = $conexion->query ( $consulta );
+		//$row = $resultado->fetch_array ( MYSQLI_ASSOC );
+		if ($conexion->error) {
+			$mensajeError = $conexion->error;
+		} else {
+			echo "<p>Te has dado de baja correctamente, serás redirigido a otra página</p>";
+			header ( 'Refresh:5;logout.php' );
+		}		
+		mysqli_close ( $conexion );
+	}
+} else {
+	?>
+<H3> Confirmación de datos para dar de baja la cuenta </H3>
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+	<label>Contraseña:</label><br> <input type="password" name="password"><br> 
+	<input type="submit" value="Entrar" name="enviar">
+</form>
+<a href="index.php">Si no estás seguro de darte de baja,haz click</a>
+<?php
+}
+if (! empty ( $mensajeError )) {
+	echo "<h3>$mensajeError</h3><br>";
+	echo "<a href='baja.php'>Volver a intentar</a>";
+}
+?>
+</body>
+</html>
+

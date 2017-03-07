@@ -1,103 +1,71 @@
 <?php
-session_start ();
-$mensajeError = "";
+// login.php: muestra un formulario para iniciar sesión. El formulario será tratado en esta misma página, y si las credenciales son correctas se iniciará sesión y se redirigirá automáticamente a index.php
 ?>
 <?php
-
+session_start ();
+$mensajeError = "";
+if (! empty ( $_SESSION ['usuario'] )) {
+	header ( 'Location: index.php' );
+}
+?>
+<html>
+<head>
+<title>Autenticación en PHP</title>
+<meta charset="UTF-8" />
+<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+</head>
+<body>
+<?php
 $servidor = "localhost";
-$usuario = "alumno_rw";
-$clave = "dwes";
+$usuario = "alumno";
+$clave = "alumno";
 $conexion = new mysqli ( $servidor, $usuario, $clave, "catalogo" );
-echo "Hola 1";
 $conexion->query ( "SET NAMES 'UTF8'" );
 if ($conexion->connect_errno) {
-	$mensajeError = "Error al establecer la conexión: " . $conexion->connect_errno . "-" . $conexion->connect_error;
+	echo "<p>Error al establecer la conexión (" . $conexion->connect_errno . ") " . $conexion->connect_error . "</p>";
 }
-if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-	if (empty ( $_POST ['usuario'] )) {
-		$mensajeError = "Debes introducir un nombre";
+if (isset ( $_REQUEST ['enviar'] )) {
+	if (empty ( $_REQUEST ['usuario'] ) && empty ( $_REQUEST ['password'] )){
+		$mensajeError = "Debes introducir un nombre y contraseña, serás redigirido nuevamente a la página de login";
+		header ( 'Refresh:5;login.php' );
 	} else {
-		$login = $_POST ['usuario'];
-		$password = $_POST ['password'];
-		
-		$consulta = "SELECT * FROM usuario WHERE nombre =". $login;
-		echo "Hola 2";
+		$login = $_REQUEST ["usuario"];
+		$password = $_REQUEST ["password"];
+
+		$consulta = "SELECT * FROM usuario WHERE login = '$login'";
+
 		$resultado = $conexion->query ( $consulta );
-		// detectar error en la consulta
-		$mensajeError = $conexion->error;
-		if (empty ( $mensajeError ))
-			header ( "Location: index.php" );
-			
-// 		if ($result->num_rows > 0) {
-// 		}
 		$row = $resultado->fetch_array ( MYSQLI_ASSOC );
-		if (password_verify ( $password, $row ['password'] )) {
-			echo "Hola 3";
-			$_SESSION ['loggedin'] = true;
-			$_SESSION ['usuario'] = $login;
-			$_SESSION ['start'] = time ();
-			$_SESSION ['expire'] = $_SESSION ['start'] + (5 * 60);
-			
-			echo "Bienvenido! " . $_SESSION ['username'];
-			echo "<br><br><a href=index.php>Inicio</a>";
+		if ($resultado->num_rows == 0) {
+			$mensajeError = "Usuario no existe";
 		} else {
-			echo "Nombre de usuario o contraseña son incorrectos.";
-			echo "<br><a href='index.html'>Volver a Intentarlo</a>";
+			if (strcmp ( $row ['password'], $password ) != 0) {
+				$mensajeError = "Contraseña erronea";
+				echo "<br><a href='login.php'>Volver a Intentarlo</a>";
+			} else {
+				$_SESSION ['login'] = 1;
+				$_SESSION ['usuario'] = $_POST ['usuario'];
+				header ( 'Location: index.php' );				
+			}
 		}
 		mysqli_close ( $conexion );
 	}
-}
-
-
-/*
- if(isset($_SESSION["usuario"])){
-// echo "Debes introducir un nombre"; 
-header("Location: intropage.php");
-}
- 
-if($_SERVER ['REQUEST_METHOD'] == 'POST')){
- 
-if(!empty($_POST['usuario']) && !empty($_POST['password'])) {
- $username=$_POST['usuario'];
- $password=$_POST['password'];
- 
-$query =mysql_query("SELECT * FROM usuario WHERE nombre='".$username."' AND password='".$password."'");
- 
-$numrows=mysql_num_rows($query);
- if($numrows!=0)
- 
-{
- while($row=mysql_fetch_assoc($query))
- {
- $dbusername=$row['nombre'];
- $dbpassword=$row['password'];
- }
- 
-if($username == $dbusername && $password == $dbpassword)
- 
-{
- 
- $_SESSION['usuario']=$username;
- 
-// Redirect browser 
- header("Location: index.php");
- }
- } else {
- 
-$message = "Nombre de usuario ó contraseña invalida!";
- }
- 
 } else {
- $mensajeError = "Todos los campos son requeridos!";
+	?>
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+	<label>Introduce tu login:</label><br> <input type="text" name="usuario"><br> 
+	<label>Contraseña:</label><br> <input type="password" name="password"><br> 
+	<input type="submit" value="Entrar" name="enviar">
+</form>
+<a href="alta.php">¿aún no tienes cuenta? Haz clic aquí para crear una</a>
+<?php
 }
+if (! empty ( $mensajeError )) {
+	echo "<h3>$mensajeError</h3>";
+	//para meterlo al lado del formulario :
+	//<span class='error'><?php if (!empty($mensajeError)) {echo $mensajeError;}? ></span>
 }
-
-mysqli_close ( $conexion );
 ?>
- * */
-
-?>
- 
-
-
-
+</body>
+</html>
