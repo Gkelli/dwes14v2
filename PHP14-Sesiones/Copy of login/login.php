@@ -4,11 +4,9 @@
 <?php
 session_start ();
 $mensajeError = "";
-/*
-Si el usuario está ya logueado se ha a index directamente:
-if($_SESSION ['usuario'] = $_POST ['usuario'];)
-	header ( 'Location: index.php' );
-*/
+// if ($_SESSION ['usuario'] ==  $_POST['usuario']){// $_POST['usuario']) //if ($_SESSION ['login'] =  1)
+// 	header ( 'Location: index.php' );	
+// }
 ?>
 <html>
 <head>
@@ -22,65 +20,40 @@ $usuario = "alumno";
 $clave = "alumno";
 $conexion = new mysqli ( $servidor, $usuario, $clave, "catalogo" );
 $conexion->query ( "SET NAMES 'UTF8'" );
-echo "hola ";
 if ($conexion->connect_errno) {
 	echo "<p>Error al establecer la conexión (" . $conexion->connect_errno . ") " . $conexion->connect_error . "</p>";
 }
 if (isset ( $_REQUEST ['enviar'] )) {
-	echo "hola 2";
-	
-	if (empty ( $_REQUEST ['usuario'] ) && empty ( $_REQUEST ['password'] )) {
+	if (empty ( $_REQUEST ['usuario'] ) && empty ( $_REQUEST ['password'] ))
 		$mensajeError = "Debes introducir un nombre y contraseña";
-	} else {
-		
+
 		$login = $_REQUEST ["usuario"];
 		$password = $_REQUEST ["password"];
-		
-		$consulta = "SELECT * FROM usuario WHERE login = " . $login;
-		
-		$resultado = $conexion -> query($consulta);
-// 		if($resultado->num_rows === 0) 
-// 			echo "<p>No hay resultados en la base de datos</p>"; 
-			
-		
-		
-// 		if ( $conexion-> mysql_num_rows($resultado) == 0) {
-// 			echo "No se han encontrado filas, nada a imprimir, asi que voy a detenerme.";
-// 			exit;
-// 		}
-		
 
-	// dado que es solamente un resultado que saco de la consulta, usar otra cosa que no sea fecth array
+		$consulta = "SELECT * FROM usuario WHERE login = '$login'";
 
-		$usuario = $resultado-> fetch_array(MYSQLI_ASSOC);
-		
-		//$número_filas = mysql_num_rows ( $resultado );
-
-		if (empty($usuario)) 
-			//die ( "<h3>ERROR en la petición. Nombre de usuario no existe</h3>" );
-			$mensajeError = "El usuario no existe";
-		
-		
-		echo "hola 3";
-		
-		if (password_verify ( $password, $usuario ['password'] )) {
-		//if (strcmp ( $usuario ['password'], $password ) == 0) {
-			$mensajeError = "Contraseña erronea";
+		$resultado = $conexion->query ( $consulta );
+		$row = $resultado->fetch_array ( MYSQLI_ASSOC );
+		if ($resultado->num_rows == 0) {
+			$mensajeError = "Usuario no existe";
 		} else {
-			echo "hola hola";
-			$_SESSION ['login'] = 1;
-			$_SESSION ['usuario'] = $_POST ['usuario'];
-			header ( 'Location: index.php' );
+			if (strcmp ( $row ['password'], $password ) == 0) {
+				$_SESSION ['login'] = 1;
+				$_SESSION ['usuario'] = $_POST ['usuario'];
+				header ( 'Location: index.php' );
+			} else {
+				$mensajeError = "Contraseña erronea";
+				echo "<br><a href='login.php'>Volver a Intentarlo</a>";
+			}
 		}
-	}
-	echo "hola 4";
-	mysqli_close ( $conexion );
+		mysqli_close ( $conexion );
 } else {
 	?>
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-	<label>Introduce tu login:</label><br> <input type="text" name="usuario"><br> 
-	<label>Contraseña:</label><br> <input type="password" name="password"><br> 
-	<input type="submit" value="Entrar" name="enviar">
+	<label>Introduce tu login:</label><br> <input type="text"
+		name="usuario"><br> <label>Contraseña:</label><br> <input
+		type="password" name="password"><br> <input type="submit"
+		value="Entrar" name="enviar">
 </form>
 <?php
 }

@@ -8,20 +8,20 @@ if(isset($_POST["register"])){
  
 if(!empty($_POST['full_name'])  && !empty($_POST['username']) && !empty($_POST['password'])) {
  $full_name=$_POST['full_name'];
- $username=$_POST['username'];
+ $login=$_POST['username'];
  $password=$_POST['password'];
  
- $query=mysql_query("SELECT * FROM usuario WHERE login= ".$username."");
+ $query=mysql_query("SELECT * FROM usuario WHERE login= ".$login."");
  $numrows=mysql_num_rows($query);
  
  if($numrows==0)
  {
- $sql="INSERT INTO usuario (login ,password, nombre ) VALUES('$username', '$password', '$full_name')";
+ $consulta="INSERT INTO usuario (login ,password, nombre ) VALUES('$login', '$password', '$full_name')";
  echo "Bienvenido";
  
-$result=mysql_query($sql);
+$resultado=mysql_query($consulta);
  
- if($result){
+ if($resultado){
  	$mensajeError = "Cuenta Correctamente Creada";
  } else {
  	$mensajeError = "Error al ingresar datos de la informacion!";

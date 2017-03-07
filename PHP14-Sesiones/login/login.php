@@ -17,12 +17,12 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 	if (empty ( $_POST ['usuario'] )) {
 		$mensajeError = "Debes introducir un nombre";
 	} else {
-		$username = $_POST ['usuario'];
+		$login = $_POST ['usuario'];
 		$password = $_POST ['password'];
 		
-		$consulta = "SELECT * FROM usuario WHERE nombre =". $username;
+		$consulta = "SELECT * FROM usuario WHERE nombre =". $login;
 		echo "Hola 2";
-		$result = $conexion->query ( $consulta );
+		$resultado = $conexion->query ( $consulta );
 		// detectar error en la consulta
 		$mensajeError = $conexion->error;
 		if (empty ( $mensajeError ))
@@ -30,11 +30,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			
 // 		if ($result->num_rows > 0) {
 // 		}
-		$row = $result->fetch_array ( MYSQLI_ASSOC );
+		$row = $resultado->fetch_array ( MYSQLI_ASSOC );
 		if (password_verify ( $password, $row ['password'] )) {
 			echo "Hola 3";
 			$_SESSION ['loggedin'] = true;
-			$_SESSION ['usuario'] = $username;
+			$_SESSION ['usuario'] = $login;
 			$_SESSION ['start'] = time ();
 			$_SESSION ['expire'] = $_SESSION ['start'] + (5 * 60);
 			
