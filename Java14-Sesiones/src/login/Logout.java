@@ -32,11 +32,10 @@ public class Logout extends HttpServlet {
 		ServletContext contexto = getServletContext();
 		HttpSession session = request.getSession();
 		if ((session.getAttribute("login")!=null) || (session.getAttribute("login").equals("1"))) {
-			session.setAttribute("login", "1");
+			session.setAttribute("login", "0");
 			response.sendRedirect(contexto.getContextPath()+"/Login");
-		} else {
-			
-		}
+		} 
+		response.sendRedirect(contexto.getContextPath()+"/Login");
 	}
 
 	/**

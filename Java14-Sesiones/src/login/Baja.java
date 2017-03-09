@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletContext;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Baja")
 public class Baja extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String SQLEx = "", EX = "";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,7 +49,7 @@ public class Baja extends HttpServlet {
 		if (request.getParameter("enviar") != null) {
 			// validar nombre
 			usuario = (String) session.getAttribute("usuario");
-			password = (String) session.getAttribute("usuario");
+			password = (String) session.getAttribute("password");
 			if (password == "") {
 				mensajeError= "Debes introducir la contraseña";
 			} else {
@@ -59,7 +61,7 @@ public class Baja extends HttpServlet {
 					Class.forName("org.mariadb.jdbc.Driver").newInstance();
 					// Paso 2: Conectarse a la Base de Datos utilizando la clase Connection
 					String url = "jdbc:mariadb://localhost:3306/catalogo";
-					conn = DriverManager.getConnection(url, "alumno", "alumno");
+					conn = DriverManager.getConnection(url, "alumno_rw", "dwes");
 					// Paso 3: Crear sentencias SQL, utilizando objetos de tipo Statement
 					sentencia = conn.createStatement();
 					// Paso 4: Ejecutar la sentencia SQL a través de los objetos Statement
@@ -85,7 +87,7 @@ public class Baja extends HttpServlet {
 						Statement sentencia2 = conn.createStatement();
 						sentencia2.executeUpdate(insert);
 						sentencia2.close();
-						response.sendRedirect("/Java14-Sesiones/Logout");
+						response.sendRedirect(contexto.getContextPath()+"/Logout");
 					}
 					
 					// Paso 6: Desconexión
@@ -95,8 +97,10 @@ public class Baja extends HttpServlet {
 						sentencia.close();
 					if (conn != null)
 						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
+				}  catch (SQLException ex) {
+					this.SQLEx = "Se produjo una excepción durante la conexión: " + ex.toString();
+				} catch (Exception ex) {
+					this.EX = "Se produjo una excepción: " + ex.toString();
 				}
 			}
 		}
@@ -109,7 +113,7 @@ public class Baja extends HttpServlet {
 				+ "<label>Confirme la contraseña:</label>"
 				+ "<input type='password' name='password'/>"
 				+ "<input type='submit' name='enviar' value='Enviar'/></form>");
-		out.println("<a href='/Java14-Sesiones/MostrarContenido'>Cancelar</a>");
+		out.println("<a href='"+contexto.getContextPath()+"/MostrarContenido'>Cancelar</a>");
 		out.println("</body></html>");
 	}
 		

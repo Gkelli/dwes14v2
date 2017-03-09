@@ -75,11 +75,11 @@ public class Alta extends HttpServlet {
 					if (!rset.isBeforeFirst()) {
 						String consulta_insertar = "INSERT INTO usuario VALUES ('" + request.getParameter("usuario")
 									+ "', '" + request.getParameter("password") + "', '"
-									+ request.getParameter("nombre") + "', '" + request.getParameter("descripcion")
-									+ "', '" + request.getParameter("tipo") + "');";
+									+ request.getParameter("nombre") + "', '" + request.getParameter("tipo")
+									+ "', '" + request.getParameter("descripcion") + "');";
 							sentencia.executeUpdate(consulta_insertar);
 							mensajeError += "Te has registradro correctamente";
-							response.sendRedirect("/Java14-Sesiones/Login");
+							response.sendRedirect(contexto.getContextPath()+"/Login");
 						
 					} else {
 						mensajeError += "El usuario ya existe en la base de datos";
