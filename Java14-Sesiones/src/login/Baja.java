@@ -42,14 +42,14 @@ public class Baja extends HttpServlet {
 		String usuario = "", password="";
 		
 		HttpSession session = request.getSession();
-		if ((session.getAttribute("login")!=null) && (session.getAttribute("login").equals("1"))) {
+		if ((session.getAttribute("login")!=null) && (!session.getAttribute("login").equals("1"))) {
 			response.sendRedirect(contexto.getContextPath()+"/MostrarContenido");
 		}
 
 		if (request.getParameter("enviar") != null) {
 			// validar nombre
 			usuario = (String) session.getAttribute("usuario");
-			password = (String) session.getAttribute("password");
+			password = request.getParameter("password");
 			if (password == "") {
 				mensajeError= "Debes introducir la contraseña";
 			} else {
