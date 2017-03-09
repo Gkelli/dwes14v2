@@ -2,21 +2,12 @@
 // login.php: muestra un formulario para iniciar sesión. El formulario será tratado en esta misma página, y si las credenciales son correctas se iniciará sesión y se redirigirá automáticamente a index.php
 ?>
 <?php
-session_start ();
-$mensajeError = "";
-if (! empty ( $_SESSION ['usuario'] )) {
-	header ( 'Location: index.php' );
+
+session_start();
+if (isset($_SESSION['login']) && strcmp($_SESSION['login'], "1")==0) {
+	header ("Location:index.php");
 }
-?>
-<html>
-<head>
-<title>Autenticación en PHP</title>
-<meta charset="UTF-8" />
-<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
-<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
-</head>
-<body>
-<?php
+$mensajeError="";
 $servidor = "localhost";
 $usuario = "alumno";
 $clave = "alumno";
@@ -36,36 +27,38 @@ if (isset ( $_REQUEST ['enviar'] )) {
 		$consulta = "SELECT * FROM usuario WHERE login = '$login'";
 
 		$resultado = $conexion->query ( $consulta );
-		$row = $resultado->fetch_array ( MYSQLI_ASSOC );
+		$row = $resultado->fetch_assoc();
 		if ($resultado->num_rows == 0) {
 			$mensajeError = "Usuario no existe";
 		} else {
 			if (strcmp ( $row ['password'], $password ) != 0) {
 				$mensajeError = "Contraseña erronea";
-				echo "<br><a href='login.php'>Volver a Intentarlo</a>";
+				//echo "<br><a href='login.php'>Volver a Intentarlo</a>";
 			} else {
 				$_SESSION ['login'] = 1;
 				$_SESSION ['usuario'] = $_POST ['usuario'];
-				header ( 'Location: index.php' );				
+				header ( 'Location: index.php' );
 			}
 		}
 		mysqli_close ( $conexion );
 	}
-} else {
-	?>
+	if (! empty ( $mensajeError )) { echo "<h3 class='error'>$mensajeError</h3><br>";}
+}
+
+?>
+<html>
+<head>
+<title>Autenticación en PHP</title>
+<meta charset="UTF-8" />
+<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+</head>
+<body>
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 	<label>Introduce tu login:</label><br> <input type="text" name="usuario"><br> 
 	<label>Contraseña:</label><br> <input type="password" name="password"><br> 
 	<input type="submit" value="Entrar" name="enviar">
 </form>
 <a href="alta.php">¿aún no tienes cuenta? Haz clic aquí para crear una</a>
-<?php
-}
-if (! empty ( $mensajeError )) {
-	echo "<h3>$mensajeError</h3>";
-	//para meterlo al lado del formulario :
-	//<span class='error'><?php if (!empty($mensajeError)) {echo $mensajeError;}? ></span>
-}
-?>
 </body>
 </html>

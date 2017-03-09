@@ -5,12 +5,10 @@
 <?php
 session_start();
 $mensajeError="";
-//$_SESSION['login']= $_POST['login'];
-if (empty($_SESSION['login']) /*&& $_SESSION['login']!=1*/) {
-	$mensajeError = "Serás redirigido a la página de login";
-	header ( 'Refresh:5;login.php' );
+if ($_SESSION['login']!="1") {
+	header ("Location: login.php");
 }
-
+$mensajeError = "";
 ?>
 <html>
 <head>
@@ -33,27 +31,18 @@ $login = $_SESSION ["usuario"];
 $consulta = "SELECT * FROM usuario WHERE login = '$login'";
 
 $resultado = $conexion->query ( $consulta );
-$row = $resultado->fetch_array ( MYSQLI_ASSOC );
-if ($resultado->num_rows == 0) {
+$row = $resultado->fetch_assoc();
+if ($resultado->num_rows == 0) {	
 	$mensajeError = "Serás redirigido a la página de login";
 	header ( 'Refresh:5;login.php' );	
 } else {
-	echo "<h2>Bienvenido, ". $row['nombre'] ."</h2>";
+	echo "<h2>Bienvenido, ". $login ."</h2>";
 	echo "<a href='logout.php'>cerrar sesión</a><br>";
 	echo "<a href='baja.php'>eliminar cuenta</a>";
 }
 mysqli_close ( $conexion );     
 
-
-
-// if (isset($_SESSION['usuario'])) {
-// 	echo "<h2>Bienvenido, ".$_SESSION['usuario']."</h2>";
-// }
-// else {
-// }
-if (!empty($mensajeError)) {
-	echo "<h3>$mensajeError</h3>";
-}
+if (! empty ( $mensajeError )) { echo "<h3 class='error'>$mensajeError</h3><br>";}
 ?>
 </body>
 </html>

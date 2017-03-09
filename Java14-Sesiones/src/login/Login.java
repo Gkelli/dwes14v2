@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class MostrarContenido
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -33,87 +34,83 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'></head><body>");
+		ServletContext contexto = getServletContext();
 
-		String mensajeError = null;
+		String mensajeError="";
+		String usuario = "", password="";
+		
 		HttpSession session = request.getSession();
-		
-		if (session.getAttribute("login")!=null && session.getAttribute("login").equals("1")) {
-			response.sendRedirect("Java14-Sesiones/MostrarContenido");
+		if ((session.getAttribute("login")!=null) && (session.getAttribute("login").equals("1"))) {
+			response.sendRedirect(contexto.getContextPath()+"/MostrarContenido");
 		}
-		
-		Connection conn = null;
-		Statement sentencia = null;
-		try {
-			// Paso 1: Cargar el driver JDBC.
-			Class.forName("org.mariadb.jdbc.Driver").newInstance();
 
-			// Paso 2: Conectarse a la Base de Datos utilizando la clase
-			// Connection
-			String userName = "alumnoj";
-			String password = "alumnoj";
-			String url = "jdbc:mariadb://localhost:4000/catalogo";
-			conn = DriverManager.getConnection(url, userName, password);
-
-			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo
-			// Statement
-			sentencia = conn.createStatement();
+		if (request.getParameter("enviar") != null) {
+			// validar nombre
+			usuario = request.getParameter("username");
+			password = request.getParameter("password");
 			
-			// Paso 5: Mostrar resultados
-			if (request.getParameter("enviar") != null) {
-
-				// Paso 4: Ejecutar la sentencia SQL a través de los objetos
-				// Statement
-				String consulta = "SELECT * FROM usuario where login="+request.getParameter("usuario");
-
-				ResultSet rset = sentencia.executeQuery(consulta);
-				
-				if (request.getParameter("usuario")==null && request.getParameter("password")==null) {
-					mensajeError = "Los campos de usuario y contraseña deben estar rellenos";
-				}
-
-				if (!rset.isBeforeFirst()) {
-					mensajeError = "No existe el usuario con este login";
-				} else {
-					if (!rset.getString("password").equals(request.getParameter("password"))) {
-						mensajeError = "Contraseña incorrecta";
-					} else {
-						session.setAttribute("login", 1);
-						session.setAttribute("usuario", rset.getString("usuario"));
-						response.sendRedirect("Java14-Sesiones/MostrarContenido");
-					}
-					
-				}
-				
-
+			if (usuario == "") {
+				mensajeError= "Debes introducir un nombre";
+			} else if (password == "") {
+				mensajeError= "Debes introducir una contraseña";
 			} else {
-				out.print("<form action='Login' method='post'>");
-				out.print("	<label>Login: </label><br><input type='text' name='usuario'><br>");
-				out.print("	<label>Contraseña: </label><br><input type='password' name='password'><br>");
-				out.print("	<input type='submit' name='enviar' value='Entrar'>");
-				out.print("</form>");
-				out.print("<a href='Alta'>¿aún no tienes cuenta? Haz clic aquí para crear una</a>");
+				// Conectarse
+				Connection conn = null;
+				Statement sentencia = null;
+				try {
+					// Paso 1: Cargar el driver JDBC.
+					Class.forName("org.mariadb.jdbc.Driver").newInstance();
+					// Paso 2: Conectarse a la Base de Datos utilizando la clase Connection
+					String url = "jdbc:mariadb://localhost:3306/catalogo";
+					conn = DriverManager.getConnection(url, "alumno", "alumno");
+					// Paso 3: Crear sentencias SQL, utilizando objetos de tipo Statement
+					sentencia = conn.createStatement();
+					// Paso 4: Ejecutar la sentencia SQL a través de los objetos Statement
+					String consulta = "SELECT * from usuario WHERE login='"+usuario+"'";
+					ResultSet rset = sentencia.executeQuery(consulta);
+					// Paso 5: Mostrar resultados
+					if (!rset.isBeforeFirst() ) {    
+					    mensajeError="No se encuentra el usuario en la base de datos";
+					} 
+					else {
+						rset.next();
+						String password_aux = rset.getString("password");
+						if ( ! password_aux.equals(password)) {
+							mensajeError="La contraseña es incorrecta";
+						} else {
+							session.setAttribute("login", "1");
+							session.setAttribute("usuario",  usuario);
+							response.sendRedirect(contexto.getContextPath()+"/MostrarContenido");
+						}
+					}
+					// Paso 6: Desconexión
+					if (rset != null)
+						rset.close();
+					if (sentencia != null)
+						sentencia.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-
-			// Paso 6: Desconexión
-			if (sentencia != null)
-				sentencia.close();
-			if (conn != null)
-				conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		
-		if (mensajeError!=null) {
-			out.print(mensajeError);
-		}
-		
+		// salida
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html;UTF-8");
+		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
+				+ "<title>Sesiones en JavaEE</title></head><body>");
+		out.println("<form action='"+request.getRequestURI()+"' method='post'>"
+						+ "<label>Usuario:</label><input type='text' name='username'><br/>"
+						+ "<label>Contraseña:</label><input type='password' name='password'><br/>"
+						+ "<input type='submit' value='Iniciar sesión' name='enviar'>"
+						+ "</form>"
+						+ "<p><a href='"+contexto.getContextPath()+"/Alta'>¿Aún no estás registrado? Haz clic en este enlace</a></p>"
+						+ "<h3 class='error'>"+mensajeError+"</h3>");
 		out.println("</body></html>");
-		out.close();
 	}
-
+		
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

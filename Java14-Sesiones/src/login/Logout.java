@@ -1,11 +1,14 @@
 package login;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Logout
@@ -26,8 +29,14 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ServletContext contexto = getServletContext();
+		HttpSession session = request.getSession();
+		if ((session.getAttribute("login")!=null) || (session.getAttribute("login").equals("1"))) {
+			session.setAttribute("login", "1");
+			response.sendRedirect(contexto.getContextPath()+"/Login");
+		} else {
+			
+		}
 	}
 
 	/**
