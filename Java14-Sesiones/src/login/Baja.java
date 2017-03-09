@@ -46,13 +46,10 @@ public class Baja extends HttpServlet {
 
 		if (request.getParameter("enviar") != null) {
 			// validar nombre
-			usuario = request.getParameter("username");
-			password = request.getParameter("password");
-			
-			if (usuario == "") {
-				mensajeError= "Debes introducir un nombre";
-			} else if (password == "") {
-				mensajeError= "Debes introducir una contraseña";
+			usuario = (String) session.getAttribute("usuario");
+			password = (String) session.getAttribute("usuario");
+			if (password == "") {
+				mensajeError= "Debes introducir la contraseña";
 			} else {
 				// Conectarse
 				Connection conn = null;
@@ -72,17 +69,25 @@ public class Baja extends HttpServlet {
 					if (!rset.isBeforeFirst() ) {    
 					    mensajeError="No se encuentra el usuario";
 					} 
-					else {
-						rset.next();
-						String passwordAlmacenado = rset.getString("password");
-						if ( ! passwordAlmacenado.equals(password)) {
-							mensajeError="La contraseña es incorrecta";
-						} else {
-							session.setAttribute("login", "1");
-							session.setAttribute("usuario",  usuario);
-							response.sendRedirect(contexto.getContextPath()+"/MostrarContenido");
-						}
+
+//					while (rset.next()) {
+//						if (rset.getString("login").equals(session.getAttribute("usuario"))) {
+//							usuario = rset.getString("login");
+//							password = rset.getString("password");
+//						}
+//					}
+					//rset.beforeFirst();
+					rset.close();
+					sentencia.close();
+					if (usuario.length() > 0 && password.equals(request.getParameter("password"))) {
+						mensajeError += "<h3>Borrando</h3>";
+						String insert = "DELETE FROM usuario WHERE login = '" + usuario + "';";
+						Statement sentencia2 = conn.createStatement();
+						sentencia2.executeUpdate(insert);
+						sentencia2.close();
+						response.sendRedirect("/Java14-Sesiones/Logout");
 					}
+					
 					// Paso 6: Desconexión
 					if (rset != null)
 						rset.close();
@@ -101,12 +106,10 @@ public class Baja extends HttpServlet {
 		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
 				+ "<title>Sesiones en JavaEE</title></head><body>");
 		out.println("<form action='"+request.getRequestURI()+"' method='post'>"
-						+ "<label>Usuario:</label><input type='text' name='username'><br/>"
-						+ "<label>Contraseña:</label><input type='password' name='password'><br/>"
-						+ "<input type='submit' value='Iniciar sesión' name='enviar'>"
-						+ "</form>"
-						+ "<p><a href='"+contexto.getContextPath()+"/Alta'>¿Aún no estás registrado? Haz clic en este enlace</a></p>"
-						+ "<h3>"+mensajeError+"</h3>");
+				+ "<label>Confirme la contraseña:</label>"
+				+ "<input type='password' name='password'/>"
+				+ "<input type='submit' name='enviar' value='Enviar'/></form>");
+		out.println("<a href='/Java14-Sesiones/MostrarContenido'>Cancelar</a>");
 		out.println("</body></html>");
 	}
 		
