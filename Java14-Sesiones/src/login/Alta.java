@@ -109,9 +109,9 @@ public class Alta extends HttpServlet {
 						+ "<label>Nombre Completo:</label><br> <input type='text' name='nombre'><br/>"
 						+ "<label>Descripción:</label><br> <textarea rows='4' cols='50' name='descripcion'></textarea><br/>"
 						+ "<label>Tipo de cuenta:</label><br> Cuenta estándar <input type='radio' name='tipo' value='0' checked>Cuenta administrador<input type='radio' name='tipo' value='1'><br/>"
-						+ "<input type='submit' value='Iniciar sesión' name='enviar'>"
+						+ "<input type='submit' value='Registrarse' name='enviar'>"
 						+ "</form>"
-						+ "<p><a href='"+contexto.getContextPath()+"/Alta'>¿Aún no estás registrado? Haz clic en este enlace</a></p>"
+						+ "<p><a href='"+contexto.getContextPath()+"/Login'>¿Ya tienes cuenta? Haz clic en este enlace</a></p>"
 						+ "<h3>"+mensajeError+"</h3>");
 		out.println("</body></html>");
 	}

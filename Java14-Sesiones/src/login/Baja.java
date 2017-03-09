@@ -80,7 +80,7 @@ public class Baja extends HttpServlet {
 					rset.close();
 					sentencia.close();
 					if (usuario.length() > 0 && password.equals(request.getParameter("password"))) {
-						mensajeError += "<h3>Borrando</h3>";
+						mensajeError += "<h3>Se ha borrado correctamente</h3>";
 						String insert = "DELETE FROM usuario WHERE login = '" + usuario + "';";
 						Statement sentencia2 = conn.createStatement();
 						sentencia2.executeUpdate(insert);
