@@ -81,7 +81,7 @@ public class MostrarContenido extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		out.println("<h2>Damos la bienvenida a "+nombreCompleto+"</h2>");
+		out.println("<h2>Bienvenid@ "+nombreCompleto+"</h2>");
 		out.println("<p><a href='"+contexto.getContextPath()+"/Logout'>Cerrar sesión</a></p>");		
 		out.println("<p><a href='"+contexto.getContextPath()+"/Baja'>Eliminar cuenta</a></p>");		
 		out.println("</body></html>");
