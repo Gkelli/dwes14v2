@@ -40,6 +40,7 @@ public class Artista extends HttpServlet {
 
 		String nombre_grupo = request.getParameter("nombre");
 		boolean error_grupo_ausente = false;
+		String grupo="";
 
 		if (error_grupo_ausente) {
 			out.println("<h3>Error: falta nombre del grupo de la actuación</h3>");
@@ -78,10 +79,11 @@ public class Artista extends HttpServlet {
 								+"<ol>Dia de actuación " + rset.getString("dia") + " </ol><br/>"
 								+"<ol><img  src='img/" + rset.getString("imagen") + "' width='100' height='100'> </ol><br/>"
 								+"<ol>URL <a href='"+ rset.getString("url") +"'>" + rset.getString("url") + " </a></ol><br/>");
-						
+						grupo=rset.getString("nombre");
 						}
 					out.println("</ul>");
 				}	
+				out.print("<br/><a href='"+contexto.getContextPath()+"/Cartel?nombre="+grupo+"'>Volver al cartel del dia " + grupo + "</a><br/>");				
 				out.print("<br/><a href='"+contexto.getContextPath()+"/PaginaPrincipal'>Volver a la página principal</a>");
 				
 

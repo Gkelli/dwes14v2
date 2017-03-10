@@ -72,7 +72,7 @@ public class PaginaPrincipal extends HttpServlet {
 
 			out.println(
 					"<a href='PaginaPrincipal?idioma=es'><img src='img/es.png'></a>-<a href='PaginaPrincipal?idioma=en'><img  src='img/en.png'></a>");
-			out.print("<table>");
+			
 			out.print("<h1>PORTADA</h1>");
 
 			if (request.getParameter("idioma") != null) {
@@ -89,6 +89,7 @@ public class PaginaPrincipal extends HttpServlet {
 				out.println("<h3>No hay resultados</h3>");
 			}
 			out.println("<img  src='img/portada.jpg'>");
+			out.print("<table>");
 			while (rset.next()) {
 				out.print("<tr>");
 				out.print("<td>" + rset.getString("presentacion") + "</td></br>");
