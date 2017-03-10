@@ -1,7 +1,6 @@
 package login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -29,16 +28,12 @@ public class Logout extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ServletContext contexto = getServletContext();
-		 response.setContentType("text/html");  
-         PrintWriter out=response.getWriter();             
-         HttpSession session=request.getSession();  
-         session.setAttribute("login", "0");           
-         out.print("Te has desconectado correctamente");  
-         response.sendRedirect(contexto.getContextPath()+"/Login");
-         out.close();  
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("login", "0");
+		response.sendRedirect(contexto.getContextPath() + "/Login");
 	}
 
 	/**

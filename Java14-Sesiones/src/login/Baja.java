@@ -107,11 +107,12 @@ public class Baja extends HttpServlet {
 		// salida
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;UTF-8");
-		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
-				+ "<title>Sesiones en JavaEE</title></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'><title>Baja usuario</title></head><body>");
+
 		out.println("<form action='"+request.getRequestURI()+"' method='post'>"
+				+ "<h3 class='error'>"+mensajeError+"</h3>"
 				+ "<label>Confirme la contraseña:</label>"
-				+ "<input type='password' name='password'/>"
+				+ "<input type='password' name='password'/><br/>"
 				+ "<input type='submit' name='enviar' value='Enviar'/></form>");
 		out.println("<a href='"+contexto.getContextPath()+"/MostrarContenido'>Cancelar</a>");
 		out.println("</body></html>");

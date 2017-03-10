@@ -40,14 +40,13 @@ public class MostrarContenido extends HttpServlet {
 		if ((session.getAttribute("login")==null) || (!session.getAttribute("login").equals("1"))) {
 			response.sendRedirect(contexto.getContextPath()+"/Login");
 		}
-
-		String nombreCompleto="";
+		String nombre_completo="";
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;UTF-8");
-		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
-				+ "<title>Sesiones en JavaEE</title></head><body>");
-		
+
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'><title>Bienvenid@</title></head><body>");
+
 		// Conectarse
 		Connection conn = null;
 		Statement sentencia = null;
@@ -68,7 +67,7 @@ public class MostrarContenido extends HttpServlet {
 			} 
 			else {
 				rset.next();
-				nombreCompleto= rset.getString("nombre");
+				nombre_completo= rset.getString("nombre");
 			}
 			// Paso 6: Desconexión
 			if (rset != null)
@@ -81,7 +80,7 @@ public class MostrarContenido extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		out.println("<h2>Bienvenid@ "+nombreCompleto+"</h2>");
+		out.println("<h2>Bienvenid@ "+nombre_completo+"</h2>");
 		out.println("<p><a href='"+contexto.getContextPath()+"/Logout'>Cerrar sesión</a></p>");		
 		out.println("<p><a href='"+contexto.getContextPath()+"/Baja'>Eliminar cuenta</a></p>");		
 		out.println("</body></html>");

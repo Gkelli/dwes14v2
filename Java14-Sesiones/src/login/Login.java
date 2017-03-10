@@ -49,11 +49,9 @@ public class Login extends HttpServlet {
 			usuario = request.getParameter("username");
 			password = request.getParameter("password");
 			
-			if (usuario == "") {
-				mensajeError= "Debes introducir un nombre";
-			} else if (password == "") {
-				mensajeError= "Debes introducir una contraseña";
-			} else {
+			if (usuario == "" || (password == "")) {
+				mensajeError= "Los campos usuario y contraseña no pueden estar vacios";
+			}  else {
 				// Conectarse
 				Connection conn = null;
 				Statement sentencia = null;
@@ -98,15 +96,16 @@ public class Login extends HttpServlet {
 		// salida
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;UTF-8");
-		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
-				+ "<title>Sesiones en JavaEE</title></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'><title>Login</title></head><body>");
+
 		out.println("<form action='"+request.getRequestURI()+"' method='post'>"
+						+ "<h3 class='error'>"+mensajeError+"</h3>"
 						+ "<label>Usuario:</label><input type='text' name='username'><br/>"
 						+ "<label>Contraseña:</label><input type='password' name='password'><br/>"
 						+ "<input type='submit' value='Iniciar sesión' name='enviar'>"
 						+ "</form>"
 						+ "<p><a href='"+contexto.getContextPath()+"/Alta'>¿Aún no estás registrado? Haz clic en este enlace</a></p>"
-						+ "<h3 class='error'>"+mensajeError+"</h3>");
+						);
 		out.println("</body></html>");
 	}
 		

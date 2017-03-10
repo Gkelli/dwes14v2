@@ -48,13 +48,11 @@ public class Alta extends HttpServlet {
 
 		if (request.getParameter("enviar") != null) {
 			// validar nombre
-			usuario = request.getParameter("username");
+			usuario = request.getParameter("usuario");
 			password = request.getParameter("password");
 			
-			if (usuario == "") {
-				mensajeError= "Debes introducir un nombre";
-			} else if (password == "") {
-				mensajeError= "Debes introducir una contraseña";
+			if (usuario == "" || (password == "")) {
+				mensajeError= "Los campos usuario y contraseña no pueden estar vacios";
 			} else {
 				// Conectarse
 				Connection conn = null;
@@ -101,18 +99,19 @@ public class Alta extends HttpServlet {
 		// salida
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;UTF-8");
-		out.println("<html><head><meta charset='UTF-8'/>" + "<style> .error {color: red}</style>"
-				+ "<title>Sesiones en JavaEE</title></head><body>");
+		out.println("<html><head><meta charset='UTF-8'/><link rel='stylesheet' type='text/css' href='styles/style.css'><link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'><title>Alta Usuario</title></head><body>");
+
 		out.println("<form action='"+request.getRequestURI()+"' method='post'>"
-						+ "<label>Login:</label><br> <input type='text' name='usuario'><br>"
-						+ "<label>Contraseña:</label><input type='password' name='password'><br/>"
+				+ "<h3 class='error'>"+mensajeError+"</h3>"
+						+ "<label>Login:</label><br> <input type='text' name='usuario'><br/>"
+						+ "<label>Contraseña:</label><br/><input type='password' name='password'><br/>"
 						+ "<label>Nombre Completo:</label><br> <input type='text' name='nombre'><br/>"
 						+ "<label>Descripción:</label><br> <textarea rows='4' cols='50' name='descripcion'></textarea><br/>"
 						+ "<label>Tipo de cuenta:</label><br> Cuenta estándar <input type='radio' name='tipo' value='0' checked>Cuenta administrador<input type='radio' name='tipo' value='1'><br/>"
 						+ "<input type='submit' value='Registrarse' name='enviar'>"
 						+ "</form>"
 						+ "<p><a href='"+contexto.getContextPath()+"/Login'>¿Ya tienes cuenta? Haz clic en este enlace</a></p>"
-						+ "<h3>"+mensajeError+"</h3>");
+						);
 		out.println("</body></html>");
 	}
 
