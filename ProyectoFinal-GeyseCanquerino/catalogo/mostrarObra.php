@@ -2,7 +2,7 @@
 <head>
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
-<link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
+<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
 <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 </head>
 <body>
@@ -38,7 +38,7 @@ while ( $autor != null ) {
 	echo "<li>Identificador del autor: <span>" . $autor ['id_autor'] . "</span></li>";
 	echo "<li>Nombre del Autor: <span>" . $autor ['nombre'] . "</span></li>";
 	echo "<li>Descripción: <span>" . $autor ['descripcion'] . "</span></li>";
-	echo "<li>Portada:</li><img  src='img/$autor[portada]' width='100%' height='300px'>";	
+	echo "<li>Portada:</li><img  src='../img/$autor[portada]' width='100%' height='300px'>";	
 	$autor = $resultado->fetch_array ( MYSQLI_ASSOC );
 }
 echo "<br/><button class='button'><a href='mostrarCatalogo.php'>VOLVER</a></button>";

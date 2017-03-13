@@ -2,7 +2,7 @@
 <head>
 <title>Conexión a BBDD con PHP</title>
 <meta charset="UTF-8" />
-<link REL="stylesheet" TYPE="text/css" HREF="styles/style.css">
+<link REL="stylesheet" TYPE="text/css" HREF="../styles/style.css">
 <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 </head>
 <body>
@@ -52,7 +52,7 @@ while ( $fila != null ) {
 	echo "<td>Año: <span>" . $fila ['anno'] . "</span></td>";	
 	echo "<td>Duración: <span>" . $fila ['duracion'] . " minutos</span></td>";
 	echo "<td>Pais: <span>" . $fila ['pais'] . "</span></td>";
-	echo "<td> <span><img src= 'img/" . $fila ['portada']."' width=100 height=100></span></td>";
+	echo "<td> <span><img src= '../img/" . $fila ['portada']."' width=100 height=100></span></td>";
 	$fila = $resultado->fetch_array ( MYSQLI_ASSOC );
 	echo "</tr>";
 }
