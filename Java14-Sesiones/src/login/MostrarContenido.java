@@ -54,8 +54,8 @@ public class MostrarContenido extends HttpServlet {
 			// Paso 1: Cargar el driver JDBC.
 			Class.forName("org.mariadb.jdbc.Driver").newInstance();
 			// Paso 2: Conectarse a la Base de Datos utilizando la clase Connection
-			String url = "jdbc:mariadb://localhost:3306/catalogo";
-			conn = DriverManager.getConnection(url, "alumno", "alumno");
+			String url = "jdbc:mariadb://localhost:4000/catalogo";
+			conn = DriverManager.getConnection(url, "alumnoj", "alumnoj");
 			// Paso 3: Crear sentencias SQL, utilizando objetos de tipo Statement
 			sentencia = conn.createStatement();
 			// Paso 4: Ejecutar la sentencia SQL a través de los objetos Statement
