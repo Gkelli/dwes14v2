@@ -1,0 +1,25 @@
+
+/*body {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+}
+*/
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron , .panel-heading{
+      margin-bottom: 0;
+      background-color: lightblue;
+	 font-weight: bold;
+	 font-family: 'Quattrocento', serif;
+    }
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+	background-color: lightyellow;
+	margin-bottom: 50px;
+	border-radius: 0;	
+}
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: lightyellow;
+	padding: 25px;
+}
