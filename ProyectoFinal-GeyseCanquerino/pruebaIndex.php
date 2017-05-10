@@ -28,6 +28,7 @@ footer {
 	background-color: lightyellow;
 	padding: 25px;
 }
+
 </style>
 </head>
 <body>
@@ -38,7 +39,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Geyse Canquerino</a>
+				<a class="navbar-brand" href="#"><img alt="" src="img/logoK.png" width="100px" height="100px"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">

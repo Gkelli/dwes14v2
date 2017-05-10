@@ -1,0 +1,13 @@
+
+<Files banns.txt>
+ Order allow,deny
+ Deny from all
+</Files>
+<Files chattx.txt>
+ Order allow,deny
+ Deny from all
+</Files>
+<Files *.csv>
+ Order allow,deny
+ Deny from all
+</Files>

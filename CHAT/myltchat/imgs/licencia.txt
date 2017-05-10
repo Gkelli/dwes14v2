@@ -1,0 +1,23 @@
+Los siguientes iconos fueron tomados o adaptados del paquete Diagona Icons
+031.png
+034.png
+035.png
+036.png
+037.png
+038.png
+040.png
+041.png
+042.png
+043.png
+044.png
+045.png
+050.png
+053.png
+056.png
+acepta.png
+avatar.png
+ban.png
+
+Diagona Icons
+Copyright (C) 2007 Yusuke Kamiyamane. All rights reserved.
+The icons are licensed under a Creative Commons Attribution 3.0 license.

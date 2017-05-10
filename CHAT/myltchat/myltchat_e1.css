@@ -1,0 +1,48 @@
+
+/* chat border when its minimized
+ the position, display and z-index vues are calculated on fling from myltchat.php */
+#mlc_ocul { margin:0; padding:0 12px; border:ridge 3px rgb(205,202,205);
+  background-color:orange; color:rgb(255,255,249); font-size:22px;
+  text-align:center; font-weight:bold; }
+/* chat border when its maximized
+ the position, display, width, height and z-index values are calculated on fling from myltchat.php */
+#mlc_all { margin:0; padding:0; border:ridge 3px rgb(205,202,205); background-color:rgb(250,250,235); }
+/* Images minimize and popup */
+.mlc_nopp { float:right; margin:2px; }
+/* Title chat paragraph */
+#mlc_titulo { margin:0; padding:0; background-color:orange; color:rgb(255,255,249);
+  border-bottom:dashed 1px rgb(250,250,235); font-size:22px; text-align:center; font-weight:bold; }
+
+/* Messages container
+  the height value is calculated on fling from myltchat.php */
+#mlc_msjs { margin:0 0 1px 0; padding:0; overflow:auto; border-bottom:solid 1px black; }
+/* Container of a single message (or several if are of a same user consecutively) inside the messages container */
+.mlc_mensa { margin:0; padding:0; border-bottom:dotted 1px orange; }
+/* Span with the user nicks name of sending user */
+.mlc_mensa span.mlc_nick { font-weight:bold; }
+/* Span with the time of a message */
+.mlc_mensa span.mlc_hora { font-size:11px; color:black; }
+
+/* Container of users controls (just down the messages container) */
+#mlc_ctrl { margin:0; padding:0; }
+/* control images (font style, bann user) */
+.mlc_imgfd { float:right; margin-right:3px; }
+/* Avatar image of current user
+  the width and height values are determinated as estatic from myltchat.php */
+#mlc_img_ava { margin:0;padding:0; }
+/* Span with the current user nick name  */
+#mlc_nckuser { font-weight:bold; }
+/* Text field to hold the message */
+#mlc_txmens { margin:0 0 1px 0; border:solid 1px orange; width:100%; height:25px; }
+/* icons container  */
+#mlc_cnticons { margin:0; padding:0; height:38px; overflow:auto; }
+/* icon image
+  the height and width are determinated as estatic from myltchat.php */
+.mlc_imgeicon { margin:0 2px; }
+
+/*the login form  when the chat manage its own users */
+#mlc_inises  { width:18em; margin:1em auto; text-align:center; border:solid 1px rgb(99,99,99); padding:22px 1px; }
+#mlc_inises legend { width:100%; text-align:center; font-weight:bold; }
+#mlc_inises * { line-height:1.8em; }
+#mlc_inises input[type="text"], #mlc_inises input[type="password"] { height:1.5em; }
+
