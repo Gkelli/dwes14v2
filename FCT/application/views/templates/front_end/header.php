@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title><?php echo $titulo;?></title>
-		<link href="<?php echo base_url();?>assets/css/index.css" rel="stylesheet" type="text/css"> 
-	</head>
-	<body>
-		<header>
-			<section class="container">
-				<h1>Proyecto FCT - Geyse</h1>
-				<p>Plantilla del proyecto DAW</p>
-			</section>
-		</header>
-		<nav>
-			<section class="container">
-				<ul>
-					<li> <a href="#">Inicio</a>
-					<li> <a href="#">Centros</a>
-					<li> <a href="#">Posts</a>
-					<li> <a href="#">Familias</a>
+<html lang="es">
+<head>
+<title>Proyecto final - Geyse Canquerino</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link REL="stylesheet" TYPE="text/css" HREF="<?php echo base_url();?>assets/css/inicio.css">
+<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img alt="" src="<?php echo base_url();?>assets/img/logoFP.png"
+					width="100px" height="100px"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Inicio</a></li>
+					<li><a href="catalogo/MostrarCatalogo.php">Catalogo de Centros</a></li>
+					<li><a href="#">Familias Profesionales</a></li>
+					<li><a href="#">Ciclos Formativos</a></li>
+					<li><a href="#">Usuarios</a></li>
 				</ul>
-			</section>		
-		</nav>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login/login.php"><span
+							class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>
+					<!-- <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Carrito</a></li> -->
+				</ul>
+				<form class="navbar-form navbar-right" role="search">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" placeholder="Buscar Centro">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>FP Conecta</h1>
+			<p>Información sobre los ciclos formativos, centros y más</p>
+		</div>
+	</div>

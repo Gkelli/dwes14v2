@@ -1,5 +1,5 @@
 <aside>
-	<ul>
+<!-- <ul>
 		<li>Menú 1</li>
 		<li><a href="#">Submenu </a></li>
 		<li><a href="#">Submenu </a></li>
@@ -25,6 +25,5 @@
 		<li><a href="#">Submenu </a></li>
 		<li><a href="#">Submenu </a></li>
 		
-	</ul>
-	
+	-->
 </aside>
