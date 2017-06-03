@@ -21,7 +21,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 <!-- Theme CSS -->
-<link href="<?php echo base_url();?>assets/css/agency.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/portada.css" rel="stylesheet">
 
 </head>
 
@@ -52,7 +52,8 @@
 					<li><a class="page-scroll" href="#posts">Posts</a></li>
 					<li><a class="page-scroll" href="#familiasprofesionales">Familias Profesionales</a></li>
 					<li><a class="page-scroll" href="#registro">Regístrese</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>
+					<li><a href="#loginModal" class="centros-link"
+						data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>			
 				</ul>
 				</ul>
 			</div>
@@ -84,10 +85,10 @@
 			<div class="row text-center">
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
-						class="fa fa-circle fa-stack-2x text-primary"></i> <i
-						class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+						class="fa fa-circle fa-stack-2x text-primary" ></i> <i
+						class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="info-heading">E-Commerce</h4>
+					<h4 class="info-heading">Valora los centros</h4>
 					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
 						adipisicing elit. Minima maxime quam architecto quo inventore
 						harum ex magni, dicta impedit.</p>
@@ -95,9 +96,9 @@
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fa fa-circle fa-stack-2x text-primary"></i> <i
-						class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+						class="fa fa-book fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="info-heading">Responsive Design</h4>
+					<h4 class="info-heading">Busca tu FP</h4>
 					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
 						adipisicing elit. Minima maxime quam architecto quo inventore
 						harum ex magni, dicta impedit.</p>
@@ -105,9 +106,9 @@
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fa fa-circle fa-stack-2x text-primary"></i> <i
-						class="fa fa-lock fa-stack-1x fa-inverse"></i>
+						class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="info-heading">Web Security</h4>
+					<h4 class="info-heading">Conoce alumnos</h4>
 					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
 						adipisicing elit. Minima maxime quam architecto quo inventore
 						harum ex magni, dicta impedit.</p>
@@ -774,6 +775,77 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!-- Model Login -->
+	
+	
+	<div class="login-modal modal fade" id="loginModal"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 text-center">
+					<h2 class="section-heading">Entra en tu cuenta</h2>
+					<h3 class="section-subheading text-muted">Introduzca tu usuario y contraseña</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 text-center">
+					<form name="sentMessage" id="registroForm" novalidate>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="Your Name *" id="name" required
+										data-validation-required-message="Please enter your name.">
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control"
+										placeholder="Your Email *" id="email" required
+										data-validation-required-message="Please enter your email address.">
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="form-group">
+									<input type="tel" class="form-control"
+										placeholder="Your Phone *" id="phone" required
+										data-validation-required-message="Please enter your phone number.">
+									<p class="help-block text-danger"></p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<textarea class="form-control" placeholder="Your Message *"
+										id="message" required
+										data-validation-required-message="Please enter a message."></textarea>
+									<p class="help-block text-danger"></p>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-8 text-center">
+								<div id="success"></div>
+								<button type="submit" class="btn btn-xl">Send Message</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<!-- End Modal Login -->
 
 	<!-- jQuery -->
 	<script
@@ -795,7 +867,7 @@
 	<script src="<?php echo base_url();?>assets/js/contact_me.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="<?php echo base_url();?>assets/js/agency.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/portada.min.js"></script>
 
 </body>
 
