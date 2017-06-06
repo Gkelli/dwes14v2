@@ -529,24 +529,24 @@ section h3.section-subheading {
     padding: 0 100px 20px 20px;
   }
 }
-.familiasprofesionales-member {
+.familiasprofesionales-type {
   text-align: center;
   margin-bottom: 50px;
 }
-.familiasprofesionales-member img {
+.familiasprofesionales-type img {
   margin: 0 auto;
   border: 7px solid white;
 }
-.familiasprofesionales-member h4 {
+.familiasprofesionales-type h4 {
   margin-top: 25px;
   margin-bottom: 0;
   text-transform: none;
 }
-.familiasprofesionales-member p {
+.familiasprofesionales-type p {
   margin-top: 0;
 }
-aside.clients img {
-  margin: 50px auto;
+aside.gif img {
+  margin: 0;
 }
 section#registro {
   background-color: white;
@@ -733,11 +733,10 @@ ul.social-buttons li a:active {
 
 
 
-
 .login-modal .modal-dialog {
-  margin: 0 auto;
-  height: 60%;
-  width: 60%;
+  margin: 0;
+  height: 100%;
+  width: auto;
 }
 .login-modal .modal-content {
   border-radius: 0;
@@ -771,18 +770,18 @@ ul.social-buttons li a:active {
 }
 .login-modal .close-modal {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 75px;
+  height: 75px;
   background-color: transparent;
   top: 25px;
-  right: 40%;
+  right: 25px;
   cursor: pointer;
 }
 .login-modal .close-modal:hover {
   opacity: 0.3;
 }
 .login-modal .close-modal .lr {
-  height: 25px;
+  height: 75px;
   width: 1px;
   margin-left: 35px;
   background-color: #222222;
@@ -813,27 +812,123 @@ ul.social-buttons li a:active {
 
 
 
+/*login*/
+
+.card-container.card {
+    width: 450px;
+    padding: 40px 40px;
+}
+
+.login-modal .btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+.card {
+    background-color: #F7F7F7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
 
 
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
 
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 33);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* fin login*/
 
 
 

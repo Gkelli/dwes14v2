@@ -51,10 +51,9 @@
 					<li><a class="page-scroll" href="#centros">Centros</a></li>
 					<li><a class="page-scroll" href="#posts">Posts</a></li>
 					<li><a class="page-scroll" href="#familiasprofesionales">Familias Profesionales</a></li>
-					<li><a class="page-scroll" href="#registro">Regístrese</a></li>
+					<li><a class="page-scroll" href="<?php echo base_url();?>index">Regístrese</a></li>
 					<li><a href="#loginModal" class="centros-link"
 						data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>			
-				</ul>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -89,9 +88,8 @@
 						class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="info-heading">Valora los centros</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<p class="text-muted">Puedes encontrar los centros más valorados en la comunidad de Madrid, también elegir cuál es el 
+					más apropiado para ti según la valoración de otros alumnos.</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
@@ -99,9 +97,8 @@
 						class="fa fa-book fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="info-heading">Busca tu FP</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<p class="text-muted">Toda la información sobre las diversas familias profesionales de Formación Profesional, elige tu camino
+					y tu futuro, toda la información que necesitas!!</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
@@ -109,9 +106,8 @@
 						class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="info-heading">Conoce alumnos</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<p class="text-muted">Comparte información y conocimientos con otros alumnos de Formación Profesional de los diversos centros
+					que hay en la comunidad de Madrid</p>
 				</div>
 			</div>
 		</div>
@@ -127,6 +123,9 @@
 				</div>
 			</div>
 			<div class="row">
+			
+			
+			
 				<div class="col-md-4 col-sm-6 centros-item">
 					<a href="#centrosModal1" class="centros-link"
 						data-toggle="modal">
@@ -135,14 +134,17 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/roundicons.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Round Icons</h4>
-						<p class="text-muted">Graphic Design</p>
+						<h4>IES VIRGEN DE LA PALOMA</h4>
+						<p class="text-muted">Calle De Francos Rodríguez, 106 	Madrid</p>
 					</div>
 				</div>
+				
+				
+				
 				<div class="col-md-4 col-sm-6 centros-item">
 					<a href="#centrosModal2" class="centros-link"
 						data-toggle="modal">
@@ -151,12 +153,12 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/startup-framework.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Startup Framework</h4>
-						<p class="text-muted">Website Design</p>
+						<h4>IES CLARA DEL REY</h4>
+						<p class="text-muted">Calle Del Padre Claret, 8 	Madrid</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 centros-item">
@@ -167,12 +169,12 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/treehouse.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Treehouse</h4>
-						<p class="text-muted">Website Design</p>
+						<h4>IES LEONARDO DA VINCI</h4>
+						<p class="text-muted"> 	Calle Del General Romero Basart, 90 </p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 centros-item">
@@ -183,12 +185,12 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/golden.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Golden</h4>
-						<p class="text-muted">Website Design</p>
+						<h4>CPR INF-PRI-SEC SAGRADO CORAZON</h4>
+						<p class="text-muted">Calle De San Jaime, 21 	Madrid</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 centros-item">
@@ -199,12 +201,12 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/escape.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Escape</h4>
-						<p class="text-muted">Website Design</p>
+						<h4>IES ISLAS FILIPINAS</h4>
+						<p class="text-muted">Calle De Jesús Maestro, 3 	Madrid</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 centros-item">
@@ -215,12 +217,12 @@
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
 						</div> <img
-						src="<?php echo base_url();?>assets/img/portfolio/dreams.png"
+						src="<?php echo base_url();?>assets/img/university-icon.png"
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>Dreams</h4>
-						<p class="text-muted">Website Design</p>
+						<h4>CPR FPE CESUR-MADRID</h4>
+						<p class="text-muted">Calle De Luis Cabrera, 63 	Madrid</p>
 					</div>
 				</div>
 			</div>
@@ -233,8 +235,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading">Últimos posts</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-						amet consectetur.</h3>
+					<h3 class="section-subheading text-muted">Comprueba las últimas publicaciones en FP Conecta</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -243,7 +244,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="<?php echo base_url();?>assets/img/about/1.jpg" alt="">
+									src="<?php echo base_url();?>assets/img/post-image.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -261,7 +262,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="<?php echo base_url();?>assets/img/about/2.jpg" alt="">
+									src="<?php echo base_url();?>assets/img/post-image.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -279,7 +280,7 @@
 						<li>
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="<?php echo base_url();?>assets/img/about/3.jpg" alt="">
+									src="<?php echo base_url();?>assets/img/post-image.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -297,7 +298,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<img class="img-circle img-responsive"
-									src="<?php echo base_url();?>assets/img/about/4.jpg" alt="">
+									src="<?php echo base_url();?>assets/img/post-image.png" alt="">
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -315,7 +316,7 @@
 						<li class="timeline-inverted">
 							<div class="timeline-image">
 								<h4>
-									Be Part <br>Of Our <br>Story!
+									Encuentra más posts!
 								</h4>
 							</div>
 						</li>
@@ -331,90 +332,70 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading">Familias profesionales</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-						amet consectetur.</h3>
+					<h3 class="section-subheading text-muted"> Las familias profesionales más demandadas de la Formación profesional son:</h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<div class="familiasprofesionales-member">
-						<img src="<?php echo base_url();?>assets/img/team/1.jpg"
-							class="img-responsive img-circle" alt="">
-						<h4>Kay Garland</h4>
-						<p class="text-muted">Lead Designer</p>
+					<div class="familiasprofesionales-type">
+						<span class="fa-stack fa-4x"> <i
+						class="fa fa-circle fa-stack-2x text-primary" ></i> <i
+						class="fa fa-heartbeat fa-stack-1x fa-inverse"></i>
+					</span>
+						<h4>Sanidad</h4>
+						<p class="text-muted">Una de las carreras más importantes y demandadas</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+							<li><a href="#"><i class="fa fa-users"></i></a></li>
+							<li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="familiasprofesionales-member">
-						<img src="<?php echo base_url();?>assets/img/team/2.jpg"
-							class="img-responsive img-circle" alt="">
-						<h4>Larry Parker</h4>
-						<p class="text-muted">Lead Marketer</p>
+					<div class="familiasprofesionales-type">
+						<span class="fa-stack fa-4x"> <i
+						class="fa fa-circle fa-stack-2x text-primary" ></i> <i
+						class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+					</span>
+						<h4>Educación</h4>
+						<p class="text-muted">La base de la enseñanza</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+							<li><a href="#"><i class="fa fa-users"></i></a></li>
+							<li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="familiasprofesionales-member">
-						<img src="<?php echo base_url();?>assets/img/team/3.jpg"
-							class="img-responsive img-circle" alt="">
-						<h4>Diana Pertersen</h4>
-						<p class="text-muted">Lead Developer</p>
+					<div class="familiasprofesionales-type">
+						<span class="fa-stack fa-4x"> <i
+						class="fa fa-circle fa-stack-2x text-primary" ></i> <i
+						class="fa fa-usb fa-stack-1x fa-inverse"></i>
+					</span>
+						<h4>Informática y Comunicaciones </h4>
+						<p class="text-muted">Cada vez más demandada por el sector laboral</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+							<li><a href="#"><i class="fa fa-users"></i></a></li>
+							<li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis
-						ad perspiciatis, totam corporis ea, alias ut unde.</p>
+					<p class="large text-muted">La  Formación Profesional actual está formada por diferentes Familias Profesionales que constan de varios Ciclos Formativos. Estos Ciclos Formativos tienen dos niveles: de Grado Medio y de Grado Superior. </p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Sección modulos -->
-	<aside class="clients">
+	<aside class="gif">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<a href="#"> <img
-						src="<?php echo base_url();?>assets/img/logos/envato.jpg"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<a href="#"> <img
-						src="<?php echo base_url();?>assets/img/logos/designmodo.jpg"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<a href="#"> <img
-						src="<?php echo base_url();?>assets/img/logos/themeforest.jpg"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<a href="#"> <img
-						src="<?php echo base_url();?>assets/img/logos/creative-market.jpg"
-						class="img-responsive img-centered" alt="">
-					</a>
-				</div>
-			</div>
+			<div class="row"><div class="col-xl-12 text-center">
+				<img src="http://static.tumblr.com/6f435667d54bcd899bb7fab5ba4fe99c/dseyjhb/nV4mvkc1r/tumblr_static_kirby.gif" alt=""/>
+			</div></div>
 		</div>
 	</aside>
 
@@ -429,40 +410,49 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form name="sentMessage" id="registroForm" novalidate>
+					<form name="sentMessage" id="registroForm" method="post" action="<?php echo base_url();?>usuarios/login">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control"
-										placeholder="Your Name *" id="name" required
-										data-validation-required-message="Please enter your name.">
+									<input type="tel" class="form-control"
+										placeholder="Tu login" id="login" required
+										data-validation-required-message="Tienes que introducir un login">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control"
-										placeholder="Your Email *" id="email" required
-										data-validation-required-message="Please enter your email address.">
+										placeholder="Tu email" id="email" required
+										data-validation-required-message="Tienes que introducir un email">
 									<p class="help-block text-danger"></p>
-								</div>
+								</div>								
 								<div class="form-group">
-									<input type="tel" class="form-control"
-										placeholder="Your Phone *" id="phone" required
-										data-validation-required-message="Please enter your phone number.">
+									<input type="text" class="form-control"
+										placeholder="Tu nombre" id="name" required
+										data-validation-required-message="Tienes que introducir tu nombre">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-6">	
+							
 								<div class="form-group">
-									<textarea class="form-control" placeholder="Your Message *"
-										id="message" required
-										data-validation-required-message="Please enter a message."></textarea>
+									<input type="text" class="form-control"
+										placeholder="Apellidos" id="apellidos">
+									<p class="help-block text-danger"></p>
+								</div>						
+								<div class="form-group">
+									<input type="tel" class="form-control"
+										placeholder="Tu telefono" id="phone">
+									<p class="help-block text-danger"></p>
+								</div>														
+								<div class="form-group">
+									<input type="file" class="form-control" id="avatar" >
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="col-lg-12 text-center">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-xl">Send Message</button>
+								<button type="submit" class="btn btn-xl">Registrarse</button>
 							</div>
 						</div>
 					</form>
@@ -790,55 +780,27 @@
 					</div>
 				</div>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-8 text-center">
-					<h2 class="section-heading">Entra en tu cuenta</h2>
-					<h3 class="section-subheading text-muted">Introduzca tu usuario y contraseña</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8 text-center">
-					<form name="sentMessage" id="registroForm" novalidate>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control"
-										placeholder="Your Name *" id="name" required
-										data-validation-required-message="Please enter your name.">
-									<p class="help-block text-danger"></p>
-								</div>
-								<div class="form-group">
-									<input type="email" class="form-control"
-										placeholder="Your Email *" id="email" required
-										data-validation-required-message="Please enter your email address.">
-									<p class="help-block text-danger"></p>
-								</div>
-								<div class="form-group">
-									<input type="tel" class="form-control"
-										placeholder="Your Phone *" id="phone" required
-										data-validation-required-message="Please enter your phone number.">
-									<p class="help-block text-danger"></p>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea class="form-control" placeholder="Your Message *"
-										id="message" required
-										data-validation-required-message="Please enter a message."></textarea>
-									<p class="help-block text-danger"></p>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-							<div class="col-md-8 text-center">
-								<div id="success"></div>
-								<button type="submit" class="btn btn-xl">Send Message</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" id="loginForm" method="post" action="<?php echo base_url();?>usuarios/login">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="username" class="form-control" placeholder="Usuario" required autofocus>
+                <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-success btn-block btn-signin" type="submit">Iniciar Sesión</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                ¿Te has olvidado la contraseña?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
 		</div>
-			</div>
 		</div>
 	</div>
 	
