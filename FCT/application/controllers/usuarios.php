@@ -11,7 +11,7 @@ class Usuarios extends CI_Controller{
 		$usuario = $this-> security->xss_clean(strip_tags($this-> input->post('username')));
 		$password = md5($this-> security->xss_clean(strip_tags($this-> input->post('password'))));
 		$this->Usuarios_model->login($usuario,$password);
-		$this->load->view ( 'front_end/test' );
+		$this->load->view ( 'templates/template' );
 	}
 	
 }
