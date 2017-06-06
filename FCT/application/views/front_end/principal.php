@@ -249,7 +249,7 @@
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4>martes, 6 de junio de 2017 (CEST) 1</h4>
-									<h4 class="subheading">Our Humble Beginnings</h4>
+									<h4 class="subheading">No pierdas la oportunidad de empezar tu Formación profesional Básica</h4>
 								</div>
 								<div class="timeline-body">
 									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
@@ -267,7 +267,7 @@
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4>viernes, 2 de junio de 2017 (CEST) </h4>
-									<h4 class="subheading">Lorem ipsum dolor</h4>
+									<h4 class="subheading">Guía breve sobre enseñanza de Grado Superior</h4>
 								</div>
 								<div class="timeline-body">
 									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
@@ -284,8 +284,8 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4>martes, 6 de junio de 2017 (CEST) </h4>
-									<h4 class="subheading">Lorem ipsum dolor</h4>
+									<h4>martes, 1 de junio de 2017 (CEST) </h4>
+									<h4 class="subheading">Introducción a la formación profesional</h4>
 								</div>
 								<div class="timeline-body">
 									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
@@ -303,7 +303,7 @@
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4>lunes, 29 de mayo de 2017 (CEST) </h4>
-									<h4 class="subheading">Lorem ipsum dolor</h4>
+									<h4 class="subheading">Bienvenido, este es nuestro primer post</h4>
 								</div>
 								<div class="timeline-body">
 									<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
