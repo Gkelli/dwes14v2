@@ -28,6 +28,31 @@ body {
 	margin-bottom: 50px;
 	border-radius: 0;
 }
+
+#nav-def{
+	margin-bottom:0px;
+    background-color: #f8f8f8;
+    border-color: #f8f8f8;
+    border-bottom: 3px solid #fed136;
+}
+
+#footer-text{
+	background-color: #f8f8f8;
+    border-color: #f8f8f8;
+    border-top: 3px solid #fed136;
+    position: absolute;
+    width: 100%;
+}
+#nav-nav,#nav-cuenta{
+	margin: 15px;
+}
+
+a{
+	font-size: 20px;
+}
+.navbar-nav {
+    margin: 15px;
+}
 /* Add a gray background color and some padding to the footer */
 footer {
 	background-color: lightyellow;
@@ -35,7 +60,13 @@ footer {
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form{
 	margin: 25px;
+	
 }
+#form-cont{
+	font-size: 15px;
+	
+}
+
 /*body {
 	width: 70%;
 	height: 100%;
@@ -55,8 +86,16 @@ footer {
 	margin-bottom: 50px;
 	border-radius: 0;	
 }
+.navbar-brand>img {
+    display: block;
+    width: 110px;
+}
 /* Add a gray background color and some padding to the footer */
 footer {
 	background-color: lightyellow;
 	padding: 25px;
 }
+.container{
+	position: relative;
+
+	}

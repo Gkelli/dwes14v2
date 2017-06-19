@@ -126,24 +126,43 @@
 			
 			
 			
+			<!-- ----------------------------------------------------------------------------
+			
+			
+			<?php
+			for($i = 0; $i < 6; $i ++) {
+				
+				$url = 'centro/';
+				$url .= url_title ( convert_accented_characters ( $fct_centros [$i]->nombre_centro ), "-", TRUE );
+				?>
+				<h3><?php echo anchor($url , $fct_centros[$i]->nombre_centro); ?></h3>
+				<p><?php echo $fct_centros[$i]->localidad;?></p>
+
+				<?php
+			}
+			?>
+	<!-- ----------------------------------------------------------------------------- -->
+			
+			<?php
+			for($i = 0; $i < 6; $i ++) {
+				
+				?>
 				<div class="col-md-4 col-sm-6 centros-item">
-					<a href="#centrosModal1" class="centros-link"
-						data-toggle="modal">
+					<a href="#centrosModal1" class="centros-link" data-toggle="modal">
 						<div class="centros-hover">
-							<div class="centros-hover-content">
-								<i class="fa fa-plus fa-3x"></i>
-							</div>
-						</div> <img
-						src="<?php echo base_url();?>assets/img/university-icon.png"
-						class="img-responsive" alt="">
+							<div class="centros-hover-content">	<i class="fa fa-plus fa-3x"></i></div>
+						</div> 
+						<img src="<?php echo base_url();?>assets/img/university-icon.png" class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>IES VIRGEN DE LA PALOMA</h4>
-						<p class="text-muted">Calle De Francos Rodríguez, 106 	Madrid</p>
+						<h4><?php echo $fct_centros[$i]->nombre_centro ?></h4>
+						<p class="text-muted"><?php echo $fct_centros[$i]->direccion;?></p>
 					</div>
 				</div>
 				
-				
+				<?php
+			}
+			?>
 				
 				<div class="col-md-4 col-sm-6 centros-item">
 					<a href="#centrosModal2" class="centros-link"
@@ -189,7 +208,7 @@
 						class="img-responsive" alt="">
 					</a>
 					<div class="centros-caption">
-						<h4>CPR INF-PRI-SEC SAGRADO CORAZON</h4>
+						<h4>CPR SAGRADO CORAZON</h4>
 						<p class="text-muted">Calle De San Jaime, 21 	Madrid</p>
 					</div>
 				</div>
