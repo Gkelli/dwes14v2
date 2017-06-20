@@ -1,43 +1,32 @@
-<?php
-defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+session_start(); //we need to call PHP's session object to access it through CI
 class Home extends CI_Controller {
 
-	public function __construct(){
+	function __construct()
+	{
 		parent::__construct();
-		$this->load->model('Centros_model');
 	}
 
-	function index() {
-		$datos['fct_centros'] = $this->Centros_model->listado_centros();
-		$datos['titulo'] = "FCT- Geyse";
-		$datos['contenido']='index';
-		$this->load->view ( 'templates/template' , $datos);
+	function index()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$this->load->view('home_view', $data);
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('login', 'refresh');
+		}
 	}
-	
-	//muestra detalle del centro por id
-// 	function detalle_centro($id_centro){
-// 		$id_limpio = $this -> security ->xss_clean($id_centro);
-// 		$datos['fct_detalle'] = $this -> Centros_model -> detalle_centro($id_limpio);
-// 		$this->load->view ( 'detalle' , $datos);
-// 	}
-	
-	//muestra detalle del centro por el nombre
-	function detalle_centro($nombre_centro){
-		$nombre_limpio = str_replace("-", " ", $nombre_centro);
-		$datos['fct_detalle'] = $this -> Centros_model -> detalle_centro($nombre_limpio);
-		$datos['titulo'] = $datos['fct_detalle']->nombre_centro;
-		$datos['contenido']='detalle';
-		$this->load->view ( 'templates/template' , $datos);
+
+	function logout()
+	{
+		$this->session->unset_userdata('logged_in');
+		session_destroy();
+		redirect('home', 'refresh');
 	}
-	
-	//muestra post por URL
-	
-// 	function detalle_post($url_post){
-// 		$url_limpia = $this -> security ->xss_clean($url_post);
-// 		$datos['fct_detalle_post'] = $this -> Post_model -> detalle_centro($url_limpia);
-// 		$datos['titulo'] = $datos['fct_detalle']->fct_detalle_post;
-// 		$this->load->view ( 'detalle' , $datos);
-// 	}
-	
 
 }

@@ -8,11 +8,17 @@ class Usuarios extends CI_Controller{
 	}
 	
 	function login(){
-		$this->load->model('Usuarios_model');
 		$usuario = $this-> security->xss_clean(strip_tags($this-> input->post('username')));
 		$password = md5($this-> security->xss_clean(strip_tags($this-> input->post('password'))));
 		$this->Usuarios_model->login($usuario,$password);
 		$this->load->view ( 'templates/template' );
+	}
+	
+	function catalogo() {
+		$datos['fct_usuarios'] = $this->Usuarios_model->listado_usuario();
+		$datos['titulo'] = "Usuarios - FP Conecta";
+		$datos['contenido']='principal';
+		$this->load->view ( 'front_end/catalogo_usuarios' , $datos);
 	}
 	
 }

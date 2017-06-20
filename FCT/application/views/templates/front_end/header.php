@@ -7,6 +7,7 @@
 <link REL="stylesheet" TYPE="text/css" HREF="<?php echo base_url();?>assets/css/inicio.css">
 <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="<?php echo base_url();?>assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -24,16 +25,16 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav" id ="nav-nav" >
-					<li class="active"><a href="#">Inicio</a></li>
-					<li><a href="#">Catalogo de Centros</a></li>
-					<li><a href="#">Familias Profesionales</a></li>
-					<li><a href="#">Ciclos Formativos</a></li>
-					<li><a href="#">Usuarios</a></li>
+					<li class="active"><a href="<?php echo base_url();?>posts/catalogo">Posts</a></li>
+					<li><a href="<?php echo base_url();?>centros/catalogo">Catalogo de Centros</a></li>
+					<li><a href="<?php echo base_url();?>familias_profesionales/catalogo">Familias Profesionales</a></li>
+					<li><a href="<?php echo base_url();?>modulos/catalogo">Ciclos Formativos</a></li>
+					<li><a href="<?php echo base_url();?>usuarios/catalogo">Usuarios</a></li>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="nav-cuenta">
-					<li><a href="login/login.php"><span
-							class="glyphicon glyphicon-user"></span>   Tu cuenta</a></li>
-					<!-- <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Carrito</a></li> -->
+					<li><a href="<?php echo base_url();?>usuarios/login"><span
+							class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group input-group">
@@ -48,9 +49,4 @@
 			</div>
 		</div>
 	</nav>
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>FP Conecta</h1>
-			<p>Información sobre los ciclos formativos, centros y más</p>
-		</div>
-	</div>
+

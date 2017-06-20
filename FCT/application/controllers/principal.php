@@ -5,10 +5,12 @@ class Principal extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Centros_model');
+		$this->load->model('Posts_model');
 	}
 
 	function index() {
-		$datos['fct_centros'] = $this->Centros_model->listado_centros();
+		$datos['fct_centros'] = $this->Centros_model->listado_centros_principal();
+		$datos['fct_posts'] = $this->Posts_model->listado_posts();
 		$datos['titulo'] = "Principal- FP Conecta";
 		$datos['contenido']='principal';
 		$this->load->view ( 'front_end/principal' , $datos);

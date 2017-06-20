@@ -73,14 +73,13 @@ footer {
 	margin: 0 auto;
 }
 */
-    /* Remove the jumbotron's default bottom margin */ 
      .jumbotron , .panel-heading{
       margin-bottom: 0;
       background-color: lightblue;
 	 font-weight: bold;
 	 font-family: 'Quattrocento', serif;
     }
-/* Remove the navbar's default rounded borders and increase the bottom margin */
+    
 .navbar {
 	background-color: lightyellow;
 	margin-bottom: 50px;
@@ -90,8 +89,8 @@ footer {
     display: block;
     width: 110px;
 }
-/* Add a gray background color and some padding to the footer */
 footer {
+	margin-top: 30px;
 	background-color: lightyellow;
 	padding: 25px;
 }
@@ -99,3 +98,84 @@ footer {
 	position: relative;
 
 	}
+	
+.post-modal .modal-dialog {
+  margin: 0;
+  height: 100%;
+  width: auto;
+}
+.post-modal .modal-content {
+  border-radius: 0;
+  background-clip: border-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  min-height: 100%;
+  padding: 100px 0;
+  text-align: center;
+  
+}
+.post-modal .modal-content h2 {
+  margin-bottom: 15px;
+  font-size: 3em;
+}
+.post-modal .modal-content p {
+  margin-bottom: 30px;
+}
+.post-modal .modal-content p.item-intro {
+  margin: 20px 0 30px;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+.post-modal .modal-content ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+.post-modal .modal-content img {
+  margin-bottom: 30px;
+}
+.post-modal .close-modal {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-color: transparent;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+.post-modal .close-modal:hover {
+  opacity: 0.3;
+}
+.post-modal .close-modal .lr {
+  height: 75px;
+  width: 1px;
+  margin-left: 35px;
+  background-color: #222222;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Safari and Chrome */
+  z-index: 1051;
+}
+.post-modal .close-modal .lr .rl {
+  height: 75px;
+  width: 1px;
+  background-color: #222222;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari and Chrome */
+  z-index: 1052;
+}
+.post-modal .modal-backdrop {
+  opacity: 0;
+  display: none;
+}
+
+.modal-body {
+    margin-left: -180px;
+}
+	
