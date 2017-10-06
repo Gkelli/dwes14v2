@@ -21,10 +21,11 @@ class Posts_model extends CI_Model {
 	
 	function nuevo_comentario($titulo_post,$keywords,$mensaje,$fecha_post)	{
 		$data = array(
+				null,
 				'titulo_post' => $titulo_post,
+				'fecha_post' => $fecha,
 				'keywords' => $keywords,
 				'cuerpo_post' => $mensaje,
-				'fecha_post' => $fecha
 		);
 		$this->db->insert('post',$data);
 	}
