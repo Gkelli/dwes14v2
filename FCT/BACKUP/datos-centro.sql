@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `centro`
 --
 
-CREATE TABLE `centro` (
+CREATE TABLE if not exists`centro` (
   `id_centro` int(5) NOT NULL,
   `nombre_centro` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,

@@ -77,23 +77,20 @@
 					<img
 						src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
 						class="img-responsive" />
-					<h6>Jenifer Smith</h6>
+					<h6>Geyse Canquerino</h6>
 				</div>
 				<!--col-md-4 col-sm-4 col-xs-12 close-->
 
 
 				<div class="col-md-5 col-sm-5 col-xs-12">
-					<h5>Jenifer Smith</h5>
+					<h5>Geyse Canquerino</h5>
 					<p>Web Designer / Develpor</p>
 					<ul>
-						<li><span class="glyphicon glyphicon-briefcase"></span> 5 years</li>
-						<li><span class="glyphicon glyphicon-map-marker"></span> U.S.A.</li>
-						<li><span class="glyphicon glyphicon-home"></span> 555 street
-							Address,toedo 43606 U.S.A.</li>
-						<li><span class="glyphicon glyphicon-phone"></span> <a href="#"
-							title="call">(+021) 956 789123</a></li>
-						<li><span class="glyphicon glyphicon-envelope"></span><a href="#"
-							title="mail">jenifer123@gmail.com</a></li>
+						<li><span class="glyphicon glyphicon-briefcase"></span> </li>
+						<li><span class="glyphicon glyphicon-map-marker"></span> </li>
+						<li><span class="glyphicon glyphicon-home"></span> </li>
+						<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"></a></li>
+						<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"></a></li>
 
 					</ul>
 
@@ -115,10 +112,10 @@
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs nav-menu" role="tablist">
 				<li class="active"><a href="#profile" role="tab" data-toggle="tab">
-						<i class="fa fa-male"></i> Profile
+						<i class="fa fa-male"></i> Perfil
 				</a></li>
 				<li><a href="#change" role="tab" data-toggle="tab"> <i
-						class="fa fa-key"></i> Edit Profile
+						class="fa fa-key"></i> Editar Perfil
 				</a></li>
 			</ul>
 			<!--nav-tabs close-->
@@ -129,10 +126,7 @@
 					<div class="container">
 						<div class="col-sm-11" style="float: left;">
 							<div class="hve-pro">
-								<p>Hello I’m Jenifer Smith, a leading expert in interactive and
-									creative design specializing in the mobile medium. My
-									graduation from Massey University with a Bachelor of Design
-									majoring in visual communication.</p>
+								<p>BLA BLA BLA BLA BLA</p>
 							</div>
 							<!--hve-pro close-->
 						</div>
@@ -140,7 +134,7 @@
 						<br clear="all" />
 						<div class="row">
 							<div class="col-md-12">
-								<h4 class="pro-title">Bio Graph</h4>
+								<h4 class="pro-title">DAtos</h4>
 							</div>
 							<!--col-md-12 close-->
 
@@ -151,23 +145,23 @@
 									<table class="table bio-table">
 										<tbody>
 											<tr>
-												<td>Firstname</td>
-												<td>: jenifer</td>
+												<td>Nombre</td>
+												<td>: Geyse</td>
 											</tr>
 											<tr>
-												<td>Lastname</td>
-												<td>: smith</td>
+												<td>Apellidos</td>
+												<td>: Canquerino</td>
 											</tr>
 											<tr>
-												<td>Birthday</td>
-												<td>: 10 january 1980</td>
+												<td>F. Nacimiento</td>
+												<td>: 02/07/1993</td>
 											</tr>
 											<tr>
-												<td>Contury</td>
-												<td>: U.S.A.</td>
+												<td>Pais</td>
+												<td>: España</td>
 											</tr>
 											<tr>
-												<td>Occupation</td>
+												<td>Trabajo</td>
 												<td>: Web Designer</td>
 											</tr>
 
@@ -184,24 +178,24 @@
 									<table class="table bio-table">
 										<tbody>
 											<tr>
-												<td>Emai Id</td>
-												<td>: jenifer123@gmail.com</td>
+												<td>Emai </td>
+												<td>: geyse@geyse.com</td>
 											</tr>
 											<tr>
-												<td>Mobile</td>
-												<td>: (+6283) 456 789</td>
+												<td>Teléfono</td>
+												<td>: 000 000 000</td>
 											</tr>
 											<tr>
-												<td>Phone</td>
-												<td>: (+021) 956 789123</td>
+												<td>Móvil</td>
+												<td>: 00 00 00 00</td>
 											</tr>
 											<tr>
-												<td>Experience</td>
-												<td>: 5 years</td>
+												<td>XXX</td>
+												<td>: XXX</td>
 											</tr>
 											<tr>
 												<td>Twiter</td>
-												<td>#@jenifer123</td>
+												<td>#@XXX</td>
 											</tr>
 
 										</tbody>
@@ -227,7 +221,7 @@
 					<div class="container fom-main">
 						<div class="row">
 							<div class="col-sm-12">
-								<h2 class="register">Edit Your Profile</h2>
+								<h2 class="register">Editar tu Perfil</h2>
 							</div>
 							<!--col-sm-12 close-->
 
@@ -242,7 +236,7 @@
 
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">First Name</label>
+										<label class="col-md-10 control-label">Nombre</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<input name="first_name" placeholder="First Name"
@@ -254,7 +248,7 @@
 									<!-- Text input-->
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Last Name</label>
+										<label class="col-md-10 control-label">Apellidos</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<input name="last_name" placeholder="Last Name"
@@ -278,7 +272,7 @@
 									<!-- Text input-->
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Phone #</label>
+										<label class="col-md-10 control-label">Telefono #</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<input name="phone" placeholder="(845)555-1212"
@@ -290,7 +284,7 @@
 									<!-- Text input-->
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Address</label>
+										<label class="col-md-10 control-label">Dirección</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<textarea class="form-control" name="comment"
@@ -300,7 +294,7 @@
 									</div>
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Project Description</label>
+										<label class="col-md-10 control-label">Descripción</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<textarea class="form-control" name="comment"
@@ -329,14 +323,14 @@
 									<!-- Select Basic -->
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Qualification</label>
+										<label class="col-md-10 control-label">xxx</label>
 										<div class="col-md-12 selectContainer">
 											<div class="input-group">
 												<select name="state" class="form-control selectpicker">
-													<option value=" ">your Qualification</option>
-													<option>M.A.</option>
-													<option>B.A.</option>
-													<option>B.Ed</option>
+													<option value=" ">xx xx</option>
+													<option>xx</option>
+													<option>xx</option>
+													<option>xx</option>
 												</select>
 											</div>
 										</div>
@@ -345,25 +339,25 @@
 
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Expertise areas</label>
+										<label class="col-md-10 control-label">Experiencia</label>
 										<div class="col-md-12 selectContainer">
 											<div class="input-group">
 												<select name="state" class="form-control selectpicker">
-													<option value=" ">Expertise areas</option>
-													<option>Expertise areas1</option>
-													<option>Expertise areas1</option>
-													<option>Expertise areas1</option>
+													<option value=" ">Experiencia areas</option>
+													<option>Experiencia areas1</option>
+													<option>Experiencia areas1</option>
+													<option>Experiencia areas1</option>
 												</select>
 											</div>
 										</div>
 									</div>
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Experience</label>
+										<label class="col-md-10 control-label">Experiencia</label>
 										<div class="col-md-12 selectContainer">
 											<div class="input-group">
 												<select name="state" class="form-control selectpicker">
-													<option value=" ">your Experience</option>
+													<option value=" ">Experiencia</option>
 													<option>1 year</option>
 													<option>2 years</option>
 													<option>3 years</option>
@@ -373,11 +367,11 @@
 									</div>
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Salary expected</label>
+										<label class="col-md-10 control-label">Salario esperado</label>
 										<div class="col-md-12 selectContainer">
 											<div class="input-group">
 												<select name="state" class="form-control selectpicker">
-													<option value=" ">your Salary expectation</option>
+													<option value=" ">importe</option>
 													<option>50 thousand</option>
 													<option>30thousand</option>
 												</select>
@@ -386,13 +380,13 @@
 									</div>
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Preferred Location</label>
+										<label class="col-md-10 control-label">Localización</label>
 										<div class="col-md-12 selectContainer">
 											<div class="input-group">
 												<select name="state" class="form-control selectpicker">
-													<option value=" ">your Preferred Location</option>
-													<option>Chandigarh</option>
-													<option>Chandigarh</option>
+													<option value=" ">preferencia</option>
+													<option>xx</option>
+													<option>xx</option>
 												</select>
 											</div>
 										</div>
@@ -410,7 +404,7 @@
 
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Choose Password</label>
+										<label class="col-md-10 control-label">Contraseña</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<input name="first_name" placeholder="Choose Password"
@@ -422,7 +416,7 @@
 
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Confiram Password</label>
+										<label class="col-md-10 control-label">Confirmar Contraseña</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
 												<input name="first_name" placeholder="Confiram Password"
@@ -434,16 +428,16 @@
 
 									<!-- radio checks -->
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Gender</label>
+										<label class="col-md-10 control-label">Género</label>
 										<div class="col-md-6">
 											<div class="radio col-md-2">
 												<label> <input type="radio" name="hosting" value="yes" />
-													Male
+													Hombre
 												</label>
 											</div>
 											<div class="radio col-md-2">
 												<label> <input type="radio" name="hosting" value="no" />
-													Female
+													Mujer
 												</label>
 											</div>
 										</div>
@@ -452,11 +446,11 @@
 									<!-- upload profile picture -->
 									<div class="col-md-12 text-left">
 										<div class="uplod-picture">
-											<span class="btn btn-default uplod-file"> Upload Photo <input
+											<span class="btn btn-default uplod-file"> Actualizar foto <input
 												type="file" />
-											</span> <span class="btn btn-default uplod-file"> Upload
-												Resume <input type="file" />
-											</span> <span class="btn btn-default uplod-file"> Upload
+											</span> <span class="btn btn-default uplod-file"> Actualizar
+												 <input type="file" />
+											</span> <span class="btn btn-default uplod-file"> Actualizar
 												Video <input type="file" />
 											</span>
 										</div>

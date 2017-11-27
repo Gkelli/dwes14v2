@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Geyse Canquerino">
-<meta name="google-signin-client_id" content="533376360265-csoho6gjclqmc815pbru6572p9at5ts5.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="AIzaSyDlB5pDDEkRkVVA3bplCX_Y0Fwr-23qRUA.apps.googleusercontent.com">
 <title><?php echo $titulo;?></title>
 
 <!-- Bootstrap Core CSS -->

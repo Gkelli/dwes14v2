@@ -13,5 +13,13 @@ class Familias_profesionales extends CI_Controller{
 		$datos['contenido']='principal';
 		$this->load->view ( 'front_end/catalogo_familias' , $datos);
 	}
+	
+	function info_familia_profesional($index) {
+		$datos['fct_familias_profesionales'] = $this->Familias_profesionales_model->listado_familias_profesionales();
+		$datos['aaa']= $this->Familias_profesionales_model->detalle_familia_profesional(str_replace("-", " ",$index));
+		$datos['titulo'] = "Catalogo de Familias Profesionales - FP Conecta";
+		$datos['contenido']= 'principal';
+		$this->load->view ( 'pages/familia_profesional_page' , $datos);
+	}
 
 }

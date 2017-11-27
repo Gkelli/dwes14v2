@@ -13,5 +13,13 @@ class Modulos extends CI_Controller{
 		$datos['contenido']='principal';
 		$this->load->view ( 'front_end/catalogo_modulos' , $datos);
 	}
+	
+	function info_modulo($index) {
+		$datos['fct_modulos'] = $this->Modulos_model->listado_modulos();
+		$datos['aaa']= $this->Modulos_model->detalle_modulo(str_replace("-", " ",$index));
+		$datos['titulo'] = "Catalogo de Modulos - FP Conecta";
+		$datos['contenido']= 'principal';
+		$this->load->view ( 'pages/modulo_page' , $datos);
+	}
 
 }
