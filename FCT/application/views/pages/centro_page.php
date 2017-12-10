@@ -15,6 +15,10 @@ $this->load->view ( 'templates/front_end/sidebar');
 			<div class="row">
 					<div class="familiasprofesionales-type">
 						<p class="text-muted"><?php echo $aaa->descripcion?></p>
+						<p class="text-muted"><?php echo $aaa->descripcion?></p>
+						<p class="text-muted"><?php echo $aaa->descripcion?></p>
+						<p class="text-muted"><?php echo $aaa->descripcion?></p>
+						<p class="text-muted"><?php echo $aaa->descripcion?></p>
 						
 						<ul class="list-inline social-buttons text-right">
 							<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><i class="fa fa-map-marker"></i></a></li>
@@ -34,7 +38,7 @@ $this->load->view ( 'templates/front_end/sidebar');
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Localización <?php echo $aaa-> nombre_centro?></h4>
         </div><div class="col-xs-12">
         <div class="modal-body" style="margin-left: 110px">
           <?php $direccion = rawurlencode ( $aaa->direccion . $aaa->localidad ); ?>

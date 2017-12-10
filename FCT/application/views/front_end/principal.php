@@ -325,52 +325,68 @@
 				</div>
 			</div>
 			<div class="row">
+				<?php if (validation_errors()) : ?>
+				<div class="col-md-12">
+					<div class="alert alert-danger" role="alert">
+					<?= validation_errors()?>
+					</div>
+				</div>
+				<?php endif; ?>
+				<?php if (isset($error)) : ?>
+				<div class="col-md-12">
+					<div class="alert alert-danger" role="alert">
+					<?= $error?>
+					</div>
+				</div>
+				<?php endif; ?>
 				<div class="col-lg-12">
-					<form name="sentMessage" id="registroForm" method="post" action="<?php echo base_url();?>usuarios/login">
+					<?= form_open('user/register') ?>
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="tel" class="form-control"
-										placeholder="Tu login" id="login" required
-										data-validation-required-message="Tienes que introducir un login">
-									<p class="help-block text-danger"></p>
-								</div>
-								<div class="form-group">
-									<input type="email" class="form-control"
-										placeholder="Tu email" id="email" required
-										data-validation-required-message="Tienes que introducir un email">
-									<p class="help-block text-danger"></p>
-								</div>								
-								<div class="form-group">
-									<input type="text" class="form-control"
-										placeholder="Tu nombre" id="name" required
-										data-validation-required-message="Tienes que introducir tu nombre">
-									<p class="help-block text-danger"></p>
-								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="tel" class="form-control" placeholder="Tu Username"
+									id="username" name="username" required
+									data-validation-required-message="Tienes que introducir un username">
+								<p class="help-block text-danger"></p>
 							</div>
-							<div class="col-md-6">	
-							
-								<div class="form-group">
-									<input type="text" class="form-control"
-										placeholder="Apellidos" id="apellidos">
-									<p class="help-block text-danger"></p>
-								</div>						
-								<div class="form-group">
-									<input type="tel" class="form-control"
-										placeholder="Tu telefono" id="phone">
-									<p class="help-block text-danger"></p>
-								</div>														
-								<div class="form-group">
-									<input type="file" class="form-control" id="avatar" >
-									<p class="help-block text-danger"></p>
-								</div>
+							<div class="form-group">
+								<input type="email" class="form-control" placeholder="Tu email"
+									id="email" name="email" required
+									data-validation-required-message="Tienes que introducir un email">
+								<p class="help-block text-danger"></p>
 							</div>
-							<div class="clearfix"></div>
-							<div class="col-lg-12 text-center">
-								<div id="success"></div>
-								<button type="submit" class="btn btn-xl">Registrarse</button>
+							<div class="form-group">
+								<input type="password" class="form-control"
+									placeholder="Tu contraseña" id="password" name="password" required
+									data-validation-required-message="Tienes que introducir una contraseña">
+								<p class="help-block text-danger"></p>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Tu nombre"
+									id="nombre_usuario" name="nombre_usuario" required
+									data-validation-required-message="Tienes que introducir tu nombre">
+								<p class="help-block text-danger"></p>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Apellidos"
+									id="apellidos" name="apellidos" >
+								<p class="help-block text-danger"></p>
+							</div>
+							<div class="form-group">
+								<input type="tel" class="form-control" placeholder="Tu móvil"
+									id="movil" name="movil">
+								<p class="help-block text-danger"></p>
+							</div>
+
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12 text-center">
+							<div id="success"></div>
+							<button type="submit" class="btn btn-xl">Registrarse</button>
+						</div>
+					</div>
 					</form>
 				</div>
 			</div>
@@ -427,8 +443,59 @@
 		</div>
 	</div>
 	
-	<!-- Modal Login -->	
-	
+	<!-- Modal Login -->
+	<div class="modal fade" id="loginModal" role="dialog">
+
+		<div class="card card-container">
+
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<img id="profile-img" class="profile-img-card"
+				src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+			<p id="profile-name" class="profile-name-card"></p>
+					<?php if (validation_errors()) : ?>
+			<div class="col-md-12">
+				<div class="alert alert-danger" role="alert">
+					<?= validation_errors() ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<?php if (isset($error)) : ?>
+			<div class="col-md-12">
+				<div class="alert alert-danger" role="alert">
+					<?= $error ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<?= form_open('user/login') ?>
+			<div class="form-group">
+			
+					<input type="text" class="form-control" id="username" name="username" placeholder="Usuario" required>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+				</div>
+			<div id="remember" class="checkbox">
+				<label> <input type="checkbox" value="remember-me"> Recordarme
+				</label>
+			</div>
+			<input class="btn btn-xl btn-block btn-signin" type="submit"
+				value="Iniciar
+					Sesión" />
+
+			<!-- /form -->
+			<br /> 
+			<a href="#" class="forgot-password" > ¿Te has olvidado la contraseña?
+			</a> <br /> <br />
+			<p style="clear: right">También puedes acceder con tu cuenta de Gmail</p>
+			<div class="g-signin2" style="float: right; margin: 10px;"
+				data-onsuccess="onSignIn"></div>
+			<br /> <br />
+			</form>
+			<!-- /container -->
+		</div>
+
+	</div>
+	<!-- 
 	<div class="login-modal modal fade" id="loginModal"
 		tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
@@ -440,7 +507,6 @@
 				</div>
 		<div class="container">
         <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" id="loginForm" method="post" action="<?php echo base_url();?>usuarios/login">
@@ -453,7 +519,7 @@
                     </label>
                 </div>
                 <button class="btn btn-lg btn-success btn-block btn-signin" type="submit">Iniciar Sesión </button>
-            </form><!-- /form -->
+            </form><!-- /form 
             <a href="#" class="forgot-password">
                 ¿Te has olvidado la contraseña?
             </a>
@@ -461,11 +527,11 @@
             <p style= "clear:right">También puedes acceder con tu cuenta de Gmail </p>
             <div class="g-signin2" style= "float:right" data-onsuccess="onSignIn"></div>
         </div>
-    </div><!-- /container -->
+    </div><!-- /container 
 		</div>
 		</div>
 	</div>
-	
+	-->
 	<!-- End Modal Login -->
 	
 	<!-- interación con google -->
@@ -477,6 +543,8 @@
 		  console.log('Image URL: ' + profile.getImageUrl());
 		  console.log('Email: ' + profile.getEmail()); 
 		}
+
+
 	</script>
 	<!-- jQuery -->
 	<script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
@@ -495,6 +563,9 @@
 
 	<!-- Theme JavaScript -->
 	<script src="<?php echo base_url();?>assets/js/portada.min.js"></script>
+	<!--<script type="text/javascript">$(document).ready(function(){
+        $("#loginModal").modal('show');
+    });</script>-->
 
 </body>
 

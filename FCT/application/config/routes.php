@@ -62,5 +62,19 @@ $route['usuario/(:any)'] = 'home/detalle_usuario/$1';
 
 $route['pages/(:any)'] = 'home/detalle_usuario/$1';
 
+
+
+
+
+
+
+
+
+
+
+$route['register'] = 'user/register';
+$route['login'] = 'user/login';
+$route['logout'] = 'user/logout';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
