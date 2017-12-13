@@ -33,9 +33,16 @@
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="nav-cuenta">
-					<li><a href="<?php echo base_url();?>usuarios/login"><span
-							class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>
-				</ul>
+        <li class="dropdown glyphicon glyphicon-user>
+          
+			<ul id="login-dp" class="dropdown-menu">
+				<li><a href="<?php echo base_url();?>usuarios/info_user"><span
+							></span>Tu cuenta</a></li>
+				<li><a href="<?php echo base_url();?>usuarios/logout"><span
+							></span>Logout</a></li>
+			</ul>
+        </li>
+      </ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group input-group">
 						<input type="text" class="form-control" id="form-cont" placeholder="Buscar Centro">

@@ -340,7 +340,7 @@
 				</div>
 				<?php endif; ?>
 				<div class="col-lg-12">
-					<?= form_open('user/register') ?>
+					<?= form_open('usuarios/register') ?>
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -466,7 +466,7 @@
 				</div>
 			</div>
 		<?php endif; ?>
-		<?= form_open('user/login') ?>
+		<?= form_open('usuarios/login') ?>
 			<div class="form-group">
 			
 					<input type="text" class="form-control" id="username" name="username" placeholder="Usuario" required>

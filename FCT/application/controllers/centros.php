@@ -16,7 +16,7 @@ class Centros extends CI_Controller{
 	
 	function info_centro($index) {
 		$datos['fct_centros'] = $this->Centros_model->listado_centros();
-		$datos['aaa']= $this->Centros_model->detalle_centro(str_replace("-", " ",$index));
+		$datos['centro']= $this->Centros_model->detalle_centro(str_replace("-", " ",$index));
 		$datos['titulo'] = "Catalogo de Centros - FP Conecta";
 		$datos['contenido']= 'principal';
 		$this->load->view ( 'pages/centro_page' , $datos);

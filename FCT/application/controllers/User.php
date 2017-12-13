@@ -53,9 +53,10 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() === false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
+
+			$this->load->view('user/header');
 			$this->load->view('user/register/register', $data);
-			$this->load->view('footer');
+			$this->load->view('user/footer');
 			
 		} else {
 			
@@ -70,9 +71,9 @@ class User extends CI_Controller {
 			if ($this->user_model->create_user($username, $email, $password, $nombre_usuario, $apellidos, $movil)) {
 				
 				// user creation ok
-				$this->load->view('header');
+				$this->load->view('user/header');
 				$this->load->view('user/register/register_success', $data);
-				$this->load->view('footer');
+				$this->load->view('user/footer');
 				
 			} else {
 				
@@ -80,7 +81,9 @@ class User extends CI_Controller {
 				$data->error = 'There was a problem creating your new account. Please try again.';
 				
 				// send error to the view
-				$this->load->view('principal', $data);
+				$this->load->view('user/header');
+				$this->load->view('user/register/register', $data);
+				$this->load->view('user/footer');
 				
 			}
 			
@@ -110,9 +113,9 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
+			$this->load->view('user/header');
 			$this->load->view('user/login/login');
-			$this->load->view('footer');
+			$this->load->view('user/footer');
 			
 		} else {
 			
@@ -141,9 +144,9 @@ class User extends CI_Controller {
 				$data->error = 'Usuario o contraseña incorrectos.';
 				
 				// send error to the view
-				$this->load->view('header');
+				$this->load->view('user/header');
 				$this->load->view('user/login/login', $data);
-				$this->load->view('footer');
+				$this->load->view('user/footer');
 				
 			}
 			
@@ -170,9 +173,9 @@ class User extends CI_Controller {
 			}
 			
 			// user logout ok
-			$this->load->view('header');
+			$this->load->view('user/header');
 			$this->load->view('user/logout/logout_success', $data);
-			$this->load->view('footer');
+			$this->load->view('user/footer');
 			
 		} else {
 			

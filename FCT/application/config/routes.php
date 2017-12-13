@@ -58,7 +58,8 @@ $route['post/(:any)'] = 'home/detalle_post/$1';
 $route['familia_profesional/(:any)'] = 'familias_profesionales/info_familia_profesional/$1';
 $route['modulo/(:any)'] = 'modulos/info_modulo/$1';
 $route['tema/(:any)'] = 'home/detalle_tema/$1';
-$route['usuario/(:any)'] = 'home/detalle_usuario/$1';
+$route['usuario/perfil'] = 'usuarios/login/$1';
+$route['usuario/perfil/(:any)'] = 'usuarios/info_user/$1';
 
 $route['pages/(:any)'] = 'home/detalle_usuario/$1';
 
@@ -72,9 +73,9 @@ $route['pages/(:any)'] = 'home/detalle_usuario/$1';
 
 
 
-$route['register'] = 'user/register';
-$route['login'] = 'user/login';
-$route['logout'] = 'user/logout';
+$route['register'] = 'usuarios/register';
+//$route['usuarios/login'] = 'usuarios/info_user/$1';
+$route['logout'] = 'usuarios/logout';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

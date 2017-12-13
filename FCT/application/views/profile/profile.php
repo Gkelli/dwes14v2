@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-
+<title><?php echo $titulo; ?></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +19,7 @@
 	integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE"
 	crossorigin="anonymous">
 </head>
-
 <body>
-
-
 	<div class="container">
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
@@ -32,7 +29,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">×</button>
-						<h4 class="modal-title">Search Section</h4>
+						<h4 class="modal-title">Sección de Búsqueda</h4>
 					</div>
 					<div class="modal-body">
 
@@ -42,7 +39,7 @@
 									<div class="col-sm-8 col-xs-8 form-group top_search"
 										style="padding-right: 0px;">
 										<div class="row">
-											<label class="sr-only" for="search">Search here...</label> <span
+											<label class="sr-only" for="search">Buscar aqui...</label> <span
 												class="serach-footer"><img src="images/srch.png" /></span> <input
 												type="text" class="form-control search-wrap" id="search"
 												placeholder="Search here...">
@@ -51,7 +48,7 @@
 									<div class="row">
 										<div class="col-sm-4 col-xs-4 form-group top_search"
 											style="padding-left: 0px;">
-											<button type="submit" class="btn btn-default search-btn">SEARCH</button>
+											<button type="submit" class="btn btn-default search-btn">Buscar</button>
 										</div>
 									</div>
 								</form>
@@ -77,29 +74,26 @@
 					<img
 						src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
 						class="img-responsive" />
-					<h6>Geyse Canquerino</h6>
+					<h6><?php echo $usuario_data -> username;?></h6>
 				</div>
 				<!--col-md-4 col-sm-4 col-xs-12 close-->
 
 
 				<div class="col-md-5 col-sm-5 col-xs-12">
-					<h5>Geyse Canquerino</h5>
-					<p>Web Designer / Develpor</p>
+					<h5><?php echo $usuario_data -> username;?></h5>
+					<br/>
 					<ul>
-						<li><span class="glyphicon glyphicon-briefcase"></span> </li>
-						<li><span class="glyphicon glyphicon-map-marker"></span> </li>
-						<li><span class="glyphicon glyphicon-home"></span> </li>
-						<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"></a></li>
-						<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"></a></li>
+						<li><span class="glyphicon glyphicon-briefcase"></span> <?php echo $usuario_data -> trabajo;?> </li>
+						<li><span class="glyphicon glyphicon-map-marker"></span> <?php echo $usuario_data -> ciudad;?> </li>
+						<li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"><?php echo $usuario_data -> telefono;?></a></li>
+						<li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"><?php echo $usuario_data -> email;?></a></li>
+						<li><span class="glyphicon glyphicon-hand-up"></span> <?php echo $usuario_data -> linkedIn;?> </li>
 
 					</ul>
 
 
 				</div>
 				<!--col-md-8 col-sm-8 col-xs-12 close-->
-
-
-
 
 			</div>
 			<!--profile-head close-->
@@ -126,7 +120,7 @@
 					<div class="container">
 						<div class="col-sm-11" style="float: left;">
 							<div class="hve-pro">
-								<p>BLA BLA BLA BLA BLA</p>
+								<p><?php echo $usuario_data -> username;?></p>
 							</div>
 							<!--hve-pro close-->
 						</div>
@@ -134,7 +128,7 @@
 						<br clear="all" />
 						<div class="row">
 							<div class="col-md-12">
-								<h4 class="pro-title">DAtos</h4>
+								<h4 class="pro-title">Datos del perfil</h4>
 							</div>
 							<!--col-md-12 close-->
 
@@ -146,23 +140,23 @@
 										<tbody>
 											<tr>
 												<td>Nombre</td>
-												<td>: Geyse</td>
+												<td>: <?php echo $usuario_data -> nombre_usuario;?></td>
 											</tr>
 											<tr>
 												<td>Apellidos</td>
-												<td>: Canquerino</td>
+												<td>: <?php echo $usuario_data -> apellidos;?></td>
 											</tr>
 											<tr>
 												<td>F. Nacimiento</td>
-												<td>: 02/07/1993</td>
+												<td>: <?php echo date("d-m-Y", strtotime($usuario_data -> fecha_nacimiento)) ?></td>
+											</tr>
+											<tr>
+												<td>Ciudad </td>
+												<td>: <?php echo $usuario_data -> ciudad;?></td>
 											</tr>
 											<tr>
 												<td>Pais</td>
-												<td>: España</td>
-											</tr>
-											<tr>
-												<td>Trabajo</td>
-												<td>: Web Designer</td>
+												<td>: <?php echo $usuario_data -> pais;?></td>
 											</tr>
 
 										</tbody>
@@ -178,25 +172,28 @@
 									<table class="table bio-table">
 										<tbody>
 											<tr>
-												<td>Emai </td>
-												<td>: geyse@geyse.com</td>
+												<td>Email </td>
+												<td>: <?php echo $usuario_data -> email;?></td>
 											</tr>
 											<tr>
 												<td>Teléfono</td>
-												<td>: 000 000 000</td>
+												<td>: <?php echo $usuario_data -> telefono;?></td>
 											</tr>
 											<tr>
 												<td>Móvil</td>
-												<td>: 00 00 00 00</td>
+												<td>: <?php echo $usuario_data -> movil;?></td>
 											</tr>
+											
+											<tr>
+												<td>Trabajo</td>
+												<td>: <?php echo $usuario_data -> trabajo;?></td>
+											</tr>
+											
 											<tr>
 												<td>LinkedIn </td>
-												<td>: LinkedIn </td>
+												<td>: <?php echo $usuario_data -> linkedIn;?> </td>
 											</tr>
-											<tr>
-												<td>Twitter </td>
-												<td>#@XXX</td>
-											</tr>
+											
 
 										</tbody>
 									</table>
@@ -207,9 +204,6 @@
 
 						</div>
 						<!--row close-->
-
-
-
 
 					</div>
 					<!--container close-->
@@ -229,9 +223,23 @@
 						<!--row close-->
 						<br />
 						<div class="row">
-
-							<form class="form-horizontal main_form text-left" action=" "
-								method="post" id="contact_form">
+						
+					<?php if (validation_errors()) : ?>
+							<div class="col-md-12">
+								<div class="alert alert-danger" role="alert">
+								<?= validation_errors()?>
+								</div>
+							</div>
+					<?php endif; ?>
+					<?php if (isset($error)) : ?>
+							<div class="col-md-12">
+								<div class="alert alert-danger" role="alert">
+									<?= $error?>
+								</div>
+							</div>
+							<?php endif; ?>
+								<?= form_open('usuarios/update_user')?>
+	
 								<fieldset>
 
 
@@ -239,7 +247,7 @@
 										<label class="col-md-10 control-label">Nombre</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="first_name" placeholder="First Name"
+												<input name="nombre_usuario" value="<?php echo $usuario_data -> nombre_usuario;?>"
 													class="form-control" type="text">
 											</div>
 										</div>
@@ -251,18 +259,49 @@
 										<label class="col-md-10 control-label">Apellidos</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="last_name" placeholder="Last Name"
+												<input name="apellidos" value="<?php echo $usuario_data -> apellidos;?>"
 													class="form-control" type="text">
 											</div>
 										</div>
 									</div>
+									
+									<div class="form-group col-md-12">
+										<label class="col-md-10 control-label">F. Nacimiento</label>
+										<div class="col-md-12 inputGroupContainer">
+											<div class="input-group">
+												<input name="fecha_nacimiento" value="<?php echo $usuario_data -> fecha_nacimiento;?>"
+													class="form-control" type="date">
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group col-md-12">
+										<label class="col-md-10 control-label">Ciudad</label>
+										<div class="col-md-12 inputGroupContainer">
+											<div class="input-group">
+												<input name="ciudad" value="<?php echo $usuario_data -> ciudad;?>"
+													class="form-control" type="text">
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group col-md-12">
+										<label class="col-md-10 control-label">Pais</label>
+										<div class="col-md-12 inputGroupContainer">
+											<div class="input-group">
+												<input name="pais" value="<?php echo $usuario_data -> pais;?>"
+													class="form-control" type="text">
+											</div>
+										</div>
+									</div>
+									
 
 									<!-- Text input-->
 									<div class="form-group col-md-12">
 										<label class="col-md-10 control-label">E-Mail</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="email" placeholder="E-Mail Address"
+												<input name="email" value="<?php echo $usuario_data -> email;?>"
 													class="form-control" type="text">
 											</div>
 										</div>
@@ -272,186 +311,92 @@
 									<!-- Text input-->
 
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Telefono #</label>
+										<label class="col-md-10 control-label">Teléfono</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="phone" placeholder="(845)555-1212"
+												<input name="telefono" value="<?php echo $usuario_data -> telefono;?>"
+													class="form-control" type="tel">
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group col-md-12">
+										<label class="col-md-10 control-label">Móvil</label>
+										<div class="col-md-12 inputGroupContainer">
+											<div class="input-group">
+												<input name="movil" value="<?php echo $usuario_data -> movil;?>"
+													class="form-control" type="tel">
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group col-md-12">
+										<label class="col-md-10 control-label">Trabajo</label>
+										<div class="col-md-12 inputGroupContainer">
+											<div class="input-group">
+												<input name="trabajo" value="<?php echo $usuario_data -> trabajo;?>"
 													class="form-control" type="text">
 											</div>
 										</div>
 									</div>
-
-									<!-- Text input-->
-
+									
 									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Dirección</label>
+										<label class="col-md-10 control-label">LinkedIn</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<textarea class="form-control" name="comment"
-													placeholder="Project Description"></textarea>
+												<input name="linkedIn" value="<?php echo $usuario_data -> linkedIn;?>"
+													class="form-control" type="text">
 											</div>
 										</div>
 									</div>
+									
 
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Descripción</label>
-										<div class="col-md-12 inputGroupContainer">
-											<div class="input-group">
-												<textarea class="form-control" name="comment"
-													placeholder="Project Description"></textarea>
-											</div>
-										</div>
-									</div>
-
-
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Industry</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">Industry</option>
-													<option>Industry</option>
-													<option>Industry</option>
-													<option>Industry</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-
-									<!-- Select Basic -->
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">xxx</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">xx xx</option>
-													<option>xx</option>
-													<option>xx</option>
-													<option>xx</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Experiencia</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">Experiencia areas</option>
-													<option>Experiencia areas1</option>
-													<option>Experiencia areas1</option>
-													<option>Experiencia areas1</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Experiencia</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">Experiencia</option>
-													<option>1 year</option>
-													<option>2 years</option>
-													<option>3 years</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Salario esperado</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">importe</option>
-													<option>50 thousand</option>
-													<option>30thousand</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group col-md-12">
-										<label class="col-md-10 control-label">Localización</label>
-										<div class="col-md-12 selectContainer">
-											<div class="input-group">
-												<select name="state" class="form-control selectpicker">
-													<option value=" ">preferencia</option>
-													<option>xx</option>
-													<option>xx</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
-									<!--<div class="form-group col-md-12">
-  <label class="col-md-10 control-label">Project Description</label>
-    <div class="col-md-10 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil hint_icon"></i></span>
-        	<textarea class="form-control" name="comment" placeholder="Project Description"></textarea>
-  </div>
-  </div>
-</div>-->
+									<!-- Text input-->							
 
 
 									<div class="form-group col-md-12">
 										<label class="col-md-10 control-label">Contraseña</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="first_name" placeholder="Choose Password"
+												<input name="password" placeholder="Contraseña"
 													class="form-control" type="password">
 											</div>
 										</div>
 									</div>
-
-
 
 									<div class="form-group col-md-12">
 										<label class="col-md-10 control-label">Confirmar Contraseña</label>
 										<div class="col-md-12 inputGroupContainer">
 											<div class="input-group">
-												<input name="first_name" placeholder="Confiram Password"
+												<input name="password" placeholder="Confirmar Contraseña"
 													class="form-control" type="password">
 											</div>
 										</div>
 									</div>
 
 
-									<!-- radio checks -->
+									<!-- radio checks
 									<div class="form-group col-md-12">
 										<label class="col-md-10 control-label">Género</label>
 										<div class="col-md-6">
 											<div class="radio col-md-2">
-												<label> <input type="radio" name="hosting" value="yes" />
+												<label> <input type="radio" name="genero" value="yes" />
 													Hombre
 												</label>
 											</div>
 											<div class="radio col-md-2">
-												<label> <input type="radio" name="hosting" value="no" />
+												<label> <input type="radio" name="genero" value="no" />
 													Mujer
 												</label>
 											</div>
 										</div>
 									</div>
-
+ 									-->
 									<!-- upload profile picture -->
 									<div class="col-md-12 text-left">
 										<div class="uplod-picture">
 											<span class="btn btn-default uplod-file"> Actualizar foto <input
-												type="file" />
-											</span> <span class="btn btn-default uplod-file"> Actualizar
-												 <input type="file" />
-											</span> <span class="btn btn-default uplod-file"> Actualizar
-												Video <input type="file" />
+												type="file" />								
 											</span>
 										</div>
 										<!--uplod-picture close-->
@@ -460,8 +405,10 @@
 									<!-- Button -->
 									<div class="form-group col-md-10">
 										<div class="col-md-6">
-											<button type="submit" class="btn btn-warning submit-button">Save</button>
-											<button type="submit" class="btn btn-warning submit-button">Cancel</button>
+											<button type="submit" class="btn btn-warning submit-button">Guardar</button>
+											<button type="submit" class="btn btn-warning submit-button">Cancelar</button>
+											<input class="btn btn-xl btn-block btn-signin" type="submit"
+				value="ok" />
 
 										</div>
 									</div>
@@ -490,9 +437,6 @@
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="<?php echo base_url();?>assets/js/jqBootstrapValidation.js"></script>
-    <script src="<?php echo base_url();?>assets/js/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="<?php echo base_url();?>assets/js/portada.min.js"></script>

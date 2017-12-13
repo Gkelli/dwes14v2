@@ -3,9 +3,15 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1>Thank you for registering your new account!</h1>
+				<h1>Gracias por unirte a nosotros!</h1>
 			</div>
-			<p>You have successfully register. Please check your email inbox to confirm your email address.</p>
+			<p>Tu registro se ha efectuado. Por favor, compruebe su email para verificar el registro.</p>
+			<button type="submit" class="close"
+			onclick="window.location.href='/'">Volver a principal</button>
+			<p>-</p>
+			<button type="submit" class="close"
+			onclick="window.location.href='/usuarios/login'">Login</button>
 		</div>
 	</div><!-- .row -->
 </div><!-- .container -->
+			
