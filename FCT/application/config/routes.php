@@ -54,25 +54,13 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // $route['centro/(:num)/:any'] = 'home/detalle_centro/$1';
 $route['centro/(:any)'] = 'centros/info_centro/$1';
-$route['post/(:any)'] = 'home/detalle_post/$1';
+$route['post/(:any)'] = 'posts/info_post/$1';
 $route['familia_profesional/(:any)'] = 'familias_profesionales/info_familia_profesional/$1';
 $route['modulo/(:any)'] = 'modulos/info_modulo/$1';
 $route['tema/(:any)'] = 'home/detalle_tema/$1';
 $route['usuario/perfil'] = 'usuarios/login/$1';
 $route['usuario/perfil/(:any)'] = 'usuarios/info_user/$1';
-
 $route['pages/(:any)'] = 'home/detalle_usuario/$1';
-
-
-
-
-
-
-
-
-
-
-
 $route['register'] = 'usuarios/register';
 //$route['usuarios/login'] = 'usuarios/info_user/$1';
 $route['logout'] = 'usuarios/logout';

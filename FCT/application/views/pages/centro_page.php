@@ -1,6 +1,5 @@
 <?php
 $this->load->view ( 'templates/front_end/header');
-$this->load->view ( 'templates/front_end/sidebar');
 ?>
 <div class="container">
 
@@ -9,19 +8,15 @@ $this->load->view ( 'templates/front_end/sidebar');
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading"><?php echo $centro->nombre_centro?></h2>
-					<h3 class="section-subheading text-muted"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</h3>
+					<h3 class="section-subheading text-muted"> <?php echo $centro->localidad?></h3>
 				</div>
 			</div>
 			<div class="row">
 					<div class="familiasprofesionales-type">
 						<p class="text-muted"><?php echo $centro->descripcion?></p>
-						<p class="text-muted"><?php echo $centro->descripcion?></p>
-						<p class="text-muted"><?php echo $centro->descripcion?></p>
-						<p class="text-muted"><?php echo $centro->descripcion?></p>
-						<p class="text-muted"><?php echo $centro->descripcion?></p>
 						
 						<ul class="list-inline social-buttons text-right">
-							<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><i class="fa fa-map-marker"></i></a></li>
+							<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span>Localización Centro</span>  <i class="fa fa-map-marker"></i></a></li>
 							<li><a href="#"><i class="fa fa-users"></i></a></li>
 							<li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
 						</ul>

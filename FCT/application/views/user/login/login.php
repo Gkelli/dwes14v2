@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
 	<div class="row">
-
 		<button type="submit" class="close"
 			onclick="window.location.href='/'">Volver a principal</button>
 		<div class="card card-container">
@@ -41,7 +40,7 @@
 					Sesión" />
 
 			<!-- /form -->
-			<br /> <a href="#" class="forgot-password"> ¿Te has olvidado la
+			<br /> <a href="<?php echo base_url();?>user/login/forgot-password" class="forgot-password"> ¿Te has olvidado la
 				contraseña? </a> <br /> <br />
 			<p style="clear: right">También puedes acceder con tu cuenta de Gmail</p>
 			<div class="g-signin2" style="float: right; margin: 10px;"

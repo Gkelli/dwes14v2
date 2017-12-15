@@ -12,6 +12,6 @@
 			<button type="submit" class="close"
 			onclick="window.location.href='/usuarios/login'">Login</button>
 		</div>
-	</div><!-- .row -->
-</div><!-- .container -->
+	</div>
+</div>
 			

@@ -6,27 +6,28 @@ class Posts_model extends CI_Model {
 	}
 	
 	// listado de posts
-	function listado_posts() {
-		$this->db->order_by ( 'fecha_post' , 'desc');
+	public function listado_posts() {
+		$this->db->order_by ( 'fecha_post', 'desc' );
 		$consulta = $this->db->get ( 'post' );
 		return $consulta->result ();
 	}
-
+	
 	// muestra post por url
-	function detalle_post($url_post) {
+	public function detalle_post($url_post) {
 		$this->db->where ( 'url_post', $url_post );
 		$consulta = $this->db->get ( 'post' );
 		return $consulta->row ();
 	}
-	
-	function nuevo_comentario($titulo_post,$keywords,$mensaje,$fecha_post)	{
-		$data = array(
-				null,
+	public function nuevo_comentario($titulo_post, $keywords, $cuerpo_post, $id_usuario) {
+		$data = array (
 				'titulo_post' => $titulo_post,
-				'fecha_post' => $fecha,
+				'fecha_post' => date ( 'Y-m-j H:i:s' ),
 				'keywords' => $keywords,
-				'cuerpo_post' => $mensaje,
+				'cuerpo_post' => $cuerpo_post,
+				'id_usuario' => $id_usuario,
+				'url_post' => url_title ( convert_accented_characters ( $titulo_post ), "-", TRUE ) 
 		);
-		$this->db->insert('post',$data);
+		
+		return $this->db->insert ( 'post', $data );
 	}
 }

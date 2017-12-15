@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Geyse Canquerino">
-<meta name="google-signin-client_id" content="AIzaSyDlB5pDDEkRkVVA3bplCX_Y0Fwr-23qRUA.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="533376360265-csoho6gjclqmc815pbru6572p9at5ts5.apps.googleusercontent.com">
 <title><?php echo $titulo;?></title>
 
 <!-- Bootstrap Core CSS -->
@@ -53,7 +53,8 @@
 					<li><a class="page-scroll" href="#posts">Posts</a></li>
 					<li><a class="page-scroll" href="#familiasprofesionales">Familias Profesionales</a></li>
 					<li><a class="page-scroll" href="#registro">Regístrese</a></li>
-					<li><a href="#loginModal" class="centros-link"
+					<!-- <li><a href="#loginModal" class="centros-link" -->
+					<li><a href="<?php if (isset($_SESSION['username'] )) {echo base_url().'usuarios/info_user';} else {echo '#loginModal';}?>" class="centros-link"
 						data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Tu cuenta</a></li>			
 				</ul>
 			</div>
@@ -189,11 +190,11 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4><?php echo $fct_posts[$i]->fecha_post ?></h4>
+									<h4><?php echo date("d-m-Y", strtotime($fct_posts[$i]->fecha_post)); ?></h4>
 									<h4 class="subheading"><?php echo $fct_posts[$i]->titulo_post ?></h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted"><?php echo $fct_posts[$i]->cuerpo_post ?></p>
+									<p class="text-muted"><?php echo substr($fct_posts[$i]->cuerpo_post, 0, 200); ?></p>
 								</div>
 							</div>
 						</li>
@@ -215,11 +216,11 @@
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4><?php echo $fct_posts[$i]->fecha_post ?></h4>
+									<h4><?php echo date("d-m-Y", strtotime($fct_posts[$i]->fecha_post)) ?></h4>
 									<h4 class="subheading"><?php echo $fct_posts[$i]->titulo_post ?></h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted"><?php echo $fct_posts[$i]->cuerpo_post ?></p>
+									<p class="text-muted"><?php echo substr($fct_posts[$i]->cuerpo_post, 0, 200); ?></p>
 								</div>
 							</div>
 						</li>
@@ -484,7 +485,7 @@
 
 			<!-- /form -->
 			<br /> 
-			<a href="#" class="forgot-password" > ¿Te has olvidado la contraseña?
+			<a href="<?php echo base_url();?>user/login/forgot-password" class="forgot-password" > ¿Te has olvidado la contraseña?
 			</a> <br /> <br />
 			<p style="clear: right">También puedes acceder con tu cuenta de Gmail</p>
 			<div class="g-signin2" style="float: right; margin: 10px;"
@@ -495,43 +496,6 @@
 		</div>
 
 	</div>
-	<!-- 
-	<div class="login-modal modal fade" id="loginModal"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<div class="lr">
-						<div class="rl"></div>
-					</div>
-				</div>
-		<div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" id="loginForm" method="post" action="<?php echo base_url();?>usuarios/login">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="username" class="form-control" placeholder="Usuario" required autofocus>
-                <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Recordarme
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-success btn-block btn-signin" type="submit">Iniciar Sesión </button>
-            </form><!-- /form 
-            <a href="#" class="forgot-password">
-                ¿Te has olvidado la contraseña?
-            </a>
-            <br/><br/>
-            <p style= "clear:right">También puedes acceder con tu cuenta de Gmail </p>
-            <div class="g-signin2" style= "float:right" data-onsuccess="onSignIn"></div>
-        </div>
-    </div><!-- /container 
-		</div>
-		</div>
-	</div>
-	-->
 	<!-- End Modal Login -->
 	
 	<!-- interación con google -->
@@ -544,6 +508,18 @@
 		  console.log('Email: ' + profile.getEmail()); 
 		}
 
+	gapi.load('auth2', function() {
+		  auth2 = gapi.auth2.init({
+		    client_id: 'CLIENT_ID.apps.googleusercontent.com',
+		    fetch_basic_profile: false,
+		    scope: 'profile'
+		  });
+
+		  // Sign the user in, and then retrieve their ID.
+		  auth2.signIn().then(function() {
+		    console.log(auth2.currentUser.get().getId());
+		  });
+		});
 
 	</script>
 	<!-- jQuery -->
@@ -557,9 +533,6 @@
 		integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb"
 		crossorigin="anonymous"></script>
 
-	<!-- Contact Form JavaScript -->
-	<script src="<?php echo base_url();?>assets/js/jqBootstrapValidation.js"></script>
-	<script src="<?php echo base_url();?>assets/js/contact_me.js"></script>
 
 	<!-- Theme JavaScript -->
 	<script src="<?php echo base_url();?>assets/js/portada.min.js"></script>

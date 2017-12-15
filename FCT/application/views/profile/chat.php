@@ -1,3 +1,9 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+if ( (!isset($_SESSION['logged_in'] ) && $_SESSION['logged_in'] != true)){
+	redirect('/');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,8 +206,9 @@ function resetChat(){
 	$("ul").empty();
 }
 
-$(".mytext").on("keyup", function(e){
-	if (e.which == 13){
+$(".mytext").keyup(function(e){ 
+    var code = e.which;
+    if(code==13){
 		var text = $(this).val();
 		if (text !== ""){
 			insertChat("me", text);
@@ -209,11 +216,7 @@ $(".mytext").on("keyup", function(e){
 		}
 	}
 });
-
-	//-- Clear Chat
 	resetChat();
-
-	//-- Print Messages
 	insertChat("me", "Bienvenido...", 0);
 
 	</script>
@@ -225,7 +228,7 @@ $(".mytext").on("keyup", function(e){
 			<div class="msj-rta macro" style="margin: auto">
 				<div class="text text-r" style="background: whitesmoke !important">
 					<input class="mytext" script="insertChat()"
-						placeholder="Type a message" />
+						placeholder="Escriba un mensaje" />
 				</div>
 			</div>
 		</div>
